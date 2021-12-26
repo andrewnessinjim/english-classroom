@@ -1,0 +1,38 @@
+version: '2.4'
+
+services:
+  english-classroom:
+      build:
+        context: .
+        target: dev
+      environment:
+        - DB_URI=mongodb://english-classroom-user:english-classroom-pass@local-mongo:27017
+        - DB_NAMESPACE=englishClassroom
+      volumes:
+        - ./:/app/sourcecode
+      ports:
+        - '3000:3000'
+        - '9229:9229'
+        - '8080:8080'
+      tty: true
+      depends_on:
+        - local-mongo
+
+  local-mongo:
+    image: mongo:5.0.3
+    restart: always
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: admin
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+    tty: true
+    volumes:
+      - local-mongo-data:/data/db
+      - ./mongodb:/docker-entrypoint-initdb.d:ro
+
+volumes:
+  local-mongo-data:

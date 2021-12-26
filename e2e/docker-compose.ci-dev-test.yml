@@ -1,0 +1,31 @@
+# Approach from https://mtlynch.io/painless-web-app-testing/
+
+version: '2.4'
+
+services:
+  english-classroom-web:
+    image: ${APP_IMAGE}
+    environment:
+        - DB_URI=mongodb://english-classroom-user:english-classroom-pass@mongo:27017
+        - DB_NAMESPACE=englishClassroom
+    depends_on:
+      - mongo
+
+  cypress:
+    build: ./
+    environment:
+      - CYPRESS_baseUrl=http://english-classroom-web:3000
+    depends_on:
+      - english-classroom-web
+
+  mongo:
+    build:
+      context: ../mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: admin
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+    tty: true
