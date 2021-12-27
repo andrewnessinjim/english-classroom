@@ -5,7 +5,7 @@ import React from "react";
 import getPracticeText from "./data";
 import "./practiceList.scss"
 
-const practiceText =  getPracticeText(10);
+const practiceText =  getPracticeText(50);
 
 function PracticeList() {
     return (
