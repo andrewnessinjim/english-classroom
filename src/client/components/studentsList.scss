@@ -1,0 +1,35 @@
+.students {
+    max-width: 640px;
+    margin: auto;
+    .students--heading {
+        margin: 1em 0 ;
+    }
+
+    .students--list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .student {
+        padding: 0.5em 0.5em;
+        display: flex;
+        border-radius: 5px;
+        transition: 0.25s all;
+
+        .student--name {
+            margin-right: auto;
+        }
+
+        &:hover {
+            background: #444;
+        }
+    }
+
+    .btn {
+        padding: 0.25rem 1rem;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+}
