@@ -1,779 +1,585 @@
 const practiceText = [
     {
-        "text": "involved",
-        "supportText": "[ɪnˈvɑlvd]"
+        "text": "involved [ɪnˈvɑlvd]"
     },
     {
-        "text": "turn",
-        "supportText": "[ˈtɝn]"
+        "text": "turn [ˈtɝn]"
     },
     {
-        "text": "burn",
-        "supportText": "[ˈbɝn]"
+        "text": "burn [ˈbɝn]"
     },
     {
-        "text": "scorn",
-        "supportText": "[skɔːrn]"
+        "text": "scorn [skɔːrn]"
     },
     {
-        "text": "born",
-        "supportText": "[bɔːrn]"
+        "text": "born [bɔːrn]"
     },
     {
-        "text": "torn",
-        "supportText": "[tɔːrn]"
+        "text": "torn [tɔːrn]"
     },
     {
-        "text": "learn",
-        "supportText": "[lɜːrn]"
+        "text": "learn [lɜːrn]"
     },
     {
-        "text": "related",
-        "supportText": "[rɪˈleɪtɪd]"
+        "text": "related [rɪˈleɪtɪd]"
     },
     {
-        "text": "butter",
-        "supportText": "[ˈbʌtər]"
+        "text": "butter [ˈbʌtər]"
     },
     {
-        "text": "better",
-        "supportText": "[ˈbetər]"
+        "text": "better [ˈbetər]"
     },
     {
-        "text": "little",
-        "supportText": "[ˈlɪtɫ̩]"
+        "text": "little [ˈlɪtɫ̩]"
     },
     {
-        "text": "shuttle",
-        "supportText": "[ˈʃʌtl]"
+        "text": "shuttle [ˈʃʌtl]"
     },
     {
-        "text": "large",
-        "supportText": "[lɑːrdʒ]"
+        "text": "large [lɑːrdʒ]"
     },
     {
-        "text": "clown",
-        "supportText": "[klaʊn]"
+        "text": "clown [klaʊn]"
     },
     {
-        "text": "town",
-        "supportText": "[taʊn]"
+        "text": "town [taʊn]"
     },
     {
-        "text": "brown",
-        "supportText": "[braʊn]"
+        "text": "brown [braʊn]"
     },
     {
-        "text": "sound",
-        "supportText": "[saʊnd]"
+        "text": "sound [saʊnd]"
     },
     {
-        "text": "round",
-        "supportText": "[raʊnd]"
+        "text": "round [raʊnd]"
     },
     {
-        "text": "tasks",
-        "supportText": "[ˈtæsks]"
+        "text": "tasks [ˈtæsks]"
     },
     {
-        "text": "masks",
-        "supportText": "[ˈmæsks]"
+        "text": "masks [ˈmæsks]"
     },
     {
-        "text": "risks",
-        "supportText": "[ˈrɪsks]"
+        "text": "risks [ˈrɪsks]"
     },
     {
-        "text": "costs",
-        "supportText": "[ˈkɑːsts]"
+        "text": "costs [ˈkɑːsts]"
     },
     {
-        "text": "wrists",
-        "supportText": "[ˈrɪsts]"
+        "text": "wrists [ˈrɪsts]"
     },
     {
-        "text": "compatible",
-        "supportText": "[kəmˈpætəbl]"
+        "text": "compatible [kəmˈpætəbl]"
     },
     {
-        "text": "menu",
-        "supportText": "[ˈmenjuː]"
+        "text": "menu [ˈmenjuː]"
     },
     {
-        "text": "gourmet",
-        "supportText": "[ˈɡʊrmeɪ]"
+        "text": "gourmet [ˈɡʊrmeɪ]"
     },
     {
-        "text": "horror",
-        "supportText": "[ˈhɔːrər]"
+        "text": "horror [ˈhɔːrər]"
     },
     {
-        "text": "terror",
-        "supportText": "[ˈterər]"
+        "text": "terror [ˈterər]"
     },
     {
-        "text": "tree",
-        "supportText": "[triː]"
+        "text": "tree [triː]"
     },
     {
-        "text": "truth",
-        "supportText": "[truːθ]"
+        "text": "truth [truːθ]"
     },
     {
-        "text": "true",
-        "supportText": "[truː]"
+        "text": "true [truː]"
     },
     {
-        "text": "triangle",
-        "supportText": "[ˈtraɪæŋɡl]"
+        "text": "triangle [ˈtraɪæŋɡl]"
     },
     {
-        "text": "word",
-        "supportText": "[wɜːrd]"
+        "text": "word [wɜːrd]"
     },
     {
-        "text": "world",
-        "supportText": "[wɜːrld]"
+        "text": "world [wɜːrld]"
     },
     {
-        "text": "order",
-        "supportText": "[ˈɔːrdər]"
+        "text": "order [ˈɔːrdər]"
     },
     {
-        "text": "computer",
-        "supportText": "[kəmˈpjuːtər]"
+        "text": "computer [kəmˈpjuːtər]"
     },
     {
-        "text": "progress",
-        "supportText": "[ˈprɑːɡres]"
+        "text": "progress [ˈprɑːɡres]"
     },
     {
-        "text": "automatically",
-        "supportText": "[ˌɔːtəˈmætɪklɪ]"
+        "text": "automatically [ˌɔːtəˈmætɪklɪ]"
     },
     {
-        "text": "comedy",
-        "supportText": "[ˈkɑːmədɪ]"
+        "text": "comedy [ˈkɑːmədɪ]"
     },
     {
-        "text": "sure",
-        "supportText": "[ʃʊr]"
+        "text": "sure [ʃʊr]"
     },
     {
-        "text": "parameters",
-        "supportText": "[pəˈræmətərz]"
+        "text": "parameters [pəˈræmətərz]"
     },
     {
-        "text": "performance",
-        "supportText": "[pərˈfɔːrməns]"
+        "text": "performance [pərˈfɔːrməns]"
     },
     {
-        "text": "organization",
-        "supportText": "[ˌɔːrɡənəˈzeɪʃn]"
+        "text": "organization [ˌɔːrɡənəˈzeɪʃn]"
     },
     {
-        "text": "organized",
-        "supportText": "[ˈɔːrɡənaɪzd]"
+        "text": "organized [ˈɔːrɡənaɪzd]"
     },
     {
-        "text": "interview",
-        "supportText": "[ˈɪntɚˌvju]"
+        "text": "interview [ˈɪntɚˌvju]"
     },
     {
-        "text": "hurt",
-        "supportText": "[hɜːrt]"
+        "text": "hurt [hɜːrt]"
     },
     {
-        "text": "water",
-        "supportText": "[ˈwɑtɚ]"
+        "text": "water [ˈwɑtɚ]"
     },
     {
-        "text": "availability",
-        "supportText": "[əˌveɪləˈbɪlətɪ]"
+        "text": "availability [əˌveɪləˈbɪlətɪ]"
     },
     {
-        "text": "abstract",
-        "supportText": "[ˈæbstrækt]"
+        "text": "abstract [ˈæbstrækt]"
     },
     {
-        "text": "circles",
-        "supportText": "[ˈsɜːkəlz]"
+        "text": "circles [ˈsɜːkəlz]"
     },
     {
-        "text": "hard",
-        "supportText": "[hɑːrd]"
+        "text": "hard [hɑːrd]"
     },
     {
-        "text": "available",
-        "supportText": "[əˈveɪləbl]"
+        "text": "available [əˈveɪləbl]"
     },
     {
-        "text": "defect",
-        "supportText": "[ˈdiːfekt]"
+        "text": "defect [ˈdiːfekt]"
     },
     {
-        "text": "data",
-        "supportText": "[ˈdætə]"
+        "text": "data [ˈdætə]"
     },
     {
-        "text": "start",
-        "supportText": "[stɑːrt]"
+        "text": "start [stɑːrt]"
     },
     {
-        "text": "significant",
-        "supportText": "[sɪɡˈnɪfɪkənt]"
+        "text": "significant [sɪɡˈnɪfɪkənt]"
     },
     {
-        "text": "first",
-        "supportText": "[fɜːrst]"
+        "text": "first [fɜːrst]"
     },
     {
-        "text": "learning",
-        "supportText": "[ˈlɜːrnɪŋ]"
+        "text": "learning [ˈlɜːrnɪŋ]"
     },
     {
-        "text": "picture",
-        "supportText": "[ˈpɪktʃər]"
+        "text": "picture [ˈpɪktʃər]"
     },
     {
-        "text": "application",
-        "supportText": "[ˌæplɪˈkeɪʃn]"
+        "text": "application [ˌæplɪˈkeɪʃn]"
     },
     {
-        "text": "fantastic",
-        "supportText": "[fænˈtæstɪk]"
+        "text": "fantastic [fænˈtæstɪk]"
     },
     {
-        "text": "course",
-        "supportText": "[kɔːrs]"
+        "text": "course [kɔːrs]"
     },
     {
-        "text": "solidify",
-        "supportText": "[səˈlɪdɪfaɪ]"
+        "text": "solidify [səˈlɪdɪfaɪ]"
     },
     {
-        "text": "components",
-        "supportText": "[kəmˈpəʊnənts]"
+        "text": "components [kəmˈpəʊnənts]"
     },
     {
-        "text": "purpose",
-        "supportText": "[ˈpɜːrpəs]"
+        "text": "purpose [ˈpɜːrpəs]"
     },
     {
-        "text": "button",
-        "supportText": "[ˈbʌtn]"
+        "text": "button [ˈbʌtn]"
     },
     {
-        "text": "architecture",
-        "supportText": "[ˈɑːrkɪtektʃər]"
+        "text": "architecture [ˈɑːrkɪtektʃər]"
     },
     {
-        "text": "router",
-        "supportText": "[ˈruːtər]"
+        "text": "router [ˈruːtər]"
     },
     {
-        "text": "idiomatic",
-        "supportText": "[ˌɪdɪəˈmætɪk]"
+        "text": "idiomatic [ˌɪdɪəˈmætɪk]"
     },
     {
-        "text": "items",
-        "supportText": "[ˈaɪtəmz]"
+        "text": "items [ˈaɪtəmz]"
     },
     {
-        "text": "manipulate",
-        "supportText": "[məˈnɪpjʊleɪt]"
+        "text": "manipulate [məˈnɪpjʊleɪt]"
     },
     {
-        "text": "shadow",
-        "supportText": "[ˈʃædəʊ]"
+        "text": "shadow [ˈʃædəʊ]"
     },
     {
-        "text": "break",
-        "supportText": "[breɪk]"
+        "text": "break [breɪk]"
     },
     {
-        "text": "often",
-        "supportText": "[ˈɔːfn]"
+        "text": "often [ˈɔːfn]"
     },
     {
-        "text": "careers",
-        "supportText": "[kəˈrɪrz]"
+        "text": "careers [kəˈrɪrz]"
     },
     {
-        "text": "redundant",
-        "supportText": "[rɪˈdʌndənt]"
+        "text": "redundant [rɪˈdʌndənt]"
     },
     {
-        "text": "features",
-        "supportText": "[ˈfiːtʃərz]"
+        "text": "features [ˈfiːtʃərz]"
     },
     {
-        "text": "server",
-        "supportText": "[ˈsɜːrvər]"
+        "text": "server [ˈsɜːrvər]"
     },
     {
-        "text": "root",
-        "supportText": "[ruːt]"
+        "text": "root [ruːt]"
     },
     {
-        "text": "complicated",
-        "supportText": "[ˈkɑːmplɪkeɪtɪd]"
+        "text": "complicated [ˈkɑːmplɪkeɪtɪd]"
     },
     {
-        "text": "reserved",
-        "supportText": "[rɪˈzəːvd]"
+        "text": "reserved [rɪˈzəːvd]"
     },
     {
-        "text": "correctly",
-        "supportText": "[kəˈrektlɪ]"
+        "text": "correctly [kəˈrektlɪ]"
     },
     {
-        "text": "live",
-        "supportText": "[lɪv]"
+        "text": "live [lɪv]"
     },
     {
-        "text": "lively",
-        "supportText": "[ˈlaɪvlɪ]"
+        "text": "lively [ˈlaɪvlɪ]"
     },
     {
-        "text": "advance",
-        "supportText": "[ədˈvæns]"
+        "text": "advance [ədˈvæns]"
     },
     {
-        "text": "deliberate",
-        "supportText": "[dɪˈlɪbərət]"
+        "text": "deliberate [dɪˈlɪbərət]"
     },
     {
-        "text": "quirk",
-        "supportText": "[kwɜːrk]"
+        "text": "quirk [kwɜːrk]"
     },
     {
-        "text": "determine",
-        "supportText": "[dɪˈtɜːrmɪn]"
+        "text": "determine [dɪˈtɜːrmɪn]"
     },
     {
-        "text": "priority",
-        "supportText": "[praɪˈɔːrətɪ]"
+        "text": "priority [praɪˈɔːrətɪ]"
     },
     {
-        "text": "Very volatile villages vote vivaciously!",
-        "supportText": "[ˈverɪ] [ˈvɑːlətl] [ˈvɪlɪdʒəz] [vəʊt] [vɪˈveɪʃəslɪ]"
+        "text": "Very volatile villages vote vivaciously! [ˈverɪ] [ˈvɑːlətl] [ˈvɪlɪdʒəz] [vəʊt] [vɪˈveɪʃəslɪ]"
     },
     {
-        "text": "Try the Triple Chive Chinese cheese, Charles!",
-        "supportText": "[traɪ] [ðiː] [ˈtrɪpl] [ˈtʃaɪv] [ˌtʃaɪˈniːz] [tʃiːz], []"
+        "text": "Try the Triple Chive Chinese cheese, Charles! [traɪ] [ðiː] [ˈtrɪpl] [ˈtʃaɪv] [ˌtʃaɪˈniːz] [tʃiːz], []"
     },
     {
-        "text": "This situation is related to politics.",
-        "supportText": "[] [] [] [rɪˈleɪtɪd] [] [ˈpɑːlətɪks]"
+        "text": "This situation is related to politics. [] [] [] [rɪˈleɪtɪd] [] [ˈpɑːlətɪks]"
     },
     {
-        "text": "during",
-        "supportText": "[ˈdʊrɪŋ]"
+        "text": "during [ˈdʊrɪŋ]"
     },
     {
-        "text": "temporary",
-        "supportText": "[ˈtempərerɪ]"
+        "text": "temporary [ˈtempərerɪ]"
     },
     {
-        "text": "[ɛ]",
-        "supportText": "any [ˈɛnɪ]"
+        "text": "[ɛ] any [ˈɛnɪ]"
     },
     {
-        "text": "[æ]",
-        "supportText": "ask [ˈæsk]"
+        "text": "[æ] ask [ˈæsk]"
     },
     {
-        "text": "[u]",
-        "supportText": "oozing [ˈuzɪŋ]"
+        "text": "[u] oozing [ˈuzɪŋ]"
     },
     {
-        "text": "[ʊ]",
-        "supportText": "good [ˈɡʊd]"
+        "text": "[ʊ] good [ˈɡʊd]"
     },
     {
-        "text": "[ɔ]",
-        "supportText": "saw [ˈsɔ]"
+        "text": "[ɔ] saw [ˈsɔ]"
     },
     {
-        "text": "[ɑ]",
-        "supportText": "not [ˈnɑt]"
+        "text": "[ɑ] not [ˈnɑt]"
     },
     {
-        "text": "[ə]",
-        "supportText": "about [əˈbaʊt]"
+        "text": "[ə] about [əˈbaʊt]"
     },
     {
-        "text": "[ʌ]",
-        "supportText": "other [ˈʌðɚ]"
+        "text": "[ʌ] other [ˈʌðɚ]"
     },
     {
-        "text": "[ɚ]",
-        "supportText": "around [ɚˈɹaʊnd]"
+        "text": "[ɚ] around [ɚˈɹaʊnd]"
     },
     {
-        "text": "[ɝ]",
-        "supportText": "early [ˈɝlɪ]"
+        "text": "[ɝ] early [ˈɝlɪ]"
     },
     {
-        "text": "[ɪr]",
-        "supportText": "ears [ˈɪrz]"
+        "text": "[ɪr] ears [ˈɪrz]"
     },
     {
-        "text": "[ɛr]",
-        "supportText": "airport [ˈɛrˌpɔrt]"
+        "text": "[ɛr] airport [ˈɛrˌpɔrt]"
     },
     {
-        "text": "[ʊr]",
-        "supportText": "insurance [ɪnˈʃʊrəns]"
+        "text": "[ʊr] insurance [ɪnˈʃʊrəns]"
     },
     {
-        "text": "[ɔr]",
-        "supportText": "morning [ˈmɔrnɪŋ]"
+        "text": "[ɔr] morning [ˈmɔrnɪŋ]"
     },
     {
-        "text": "[ɑr]",
-        "supportText": "art [ˈɑrt]"
+        "text": "[ɑr] art [ˈɑrt]"
     },
     {
-        "text": "struggled",
-        "supportText": "[ˈstrʌɡəld]"
+        "text": "struggled [ˈstrʌɡəld]"
     },
     {
-        "text": "because",
-        "supportText": "[bɪˈkɔːz]"
+        "text": "because [bɪˈkɔːz]"
     },
     {
-        "text": "table",
-        "supportText": "[ˈteɪbl]"
+        "text": "table [ˈteɪbl]"
     },
     {
-        "text": "special",
-        "supportText": "[ˈspeʃl]"
+        "text": "special [ˈspeʃl]"
     },
     {
-        "text": "demand",
-        "supportText": "[dɪˈmænd]"
+        "text": "demand [dɪˈmænd]"
     },
     {
-        "text": "error",
-        "supportText": "[ˈerər]"
+        "text": "error [ˈerər]"
     },
     {
-        "text": "supersonic",
-        "supportText": "[ˌsuːpərˈsɑːnɪk]"
+        "text": "supersonic [ˌsuːpərˈsɑːnɪk]"
     },
     {
-        "text": "Atlantic",
-        "supportText": "[ətˈlan(t)ɪk]"
+        "text": "Atlantic [ətˈlan(t)ɪk]"
     },
     {
-        "text": "dedication",
-        "supportText": "[ˌdedɪˈkeɪʃn]"
+        "text": "dedication [ˌdedɪˈkeɪʃn]"
     },
     {
-        "text": "attention",
-        "supportText": "[əˈtenʃn]"
+        "text": "attention [əˈtenʃn]"
     },
     {
-        "text": "transformation",
-        "supportText": "[ˌtrænsfərˈmeɪʃn]"
+        "text": "transformation [ˌtrænsfərˈmeɪʃn]"
     },
     {
-        "text": "comprehension",
-        "supportText": "[ˌkɑːmprɪˈhenʃn]"
+        "text": "comprehension [ˌkɑːmprɪˈhenʃn]"
     },
     {
-        "text": "advantage",
-        "supportText": "[ədˈvæntɪdʒ]"
+        "text": "advantage [ədˈvæntɪdʒ]"
     },
     {
-        "text": "understand",
-        "supportText": "[ˌʌndərˈstænd]"
+        "text": "understand [ˌʌndərˈstænd]"
     },
     {
-        "text": "love",
-        "supportText": "[lʌv]"
+        "text": "love [lʌv]"
     },
     {
-        "text": "metabolism",
-        "supportText": "[məˈtæbəlɪzəm]"
+        "text": "metabolism [məˈtæbəlɪzəm]"
     },
     {
-        "text": "enthusiasm",
-        "supportText": "[ɪnˈθuːzɪæzəm]"
+        "text": "enthusiasm [ɪnˈθuːzɪæzəm]"
     },
     {
-        "text": "straightforward",
-        "supportText": "[ˌstreɪtˈfɔːrwərd]"
+        "text": "straightforward [ˌstreɪtˈfɔːrwərd]"
     },
     {
-        "text": "interested",
-        "supportText": "[ˈɪntrəstɪd]"
+        "text": "interested [ˈɪntrəstɪd]"
     },
     {
-        "text": "preserve",
-        "supportText": "[prɪˈzɜːrv]"
+        "text": "preserve [prɪˈzɜːrv]"
     },
     {
-        "text": "violin",
-        "supportText": "[ˌvaɪəˈlɪn]"
+        "text": "violin [ˌvaɪəˈlɪn]"
     },
     {
-        "text": "semiconscious",
-        "supportText": "[ˌsemɪˈkɒnʃəs]"
+        "text": "semiconscious [ˌsemɪˈkɒnʃəs]"
     },
     {
-        "text": "continue",
-        "supportText": "[kənˈtɪnjuː]"
+        "text": "continue [kənˈtɪnjuː]"
     },
     {
-        "text": "presentation",
-        "supportText": "[ˌpriːzenˈteɪʃn]"
+        "text": "presentation [ˌpriːzenˈteɪʃn]"
     },
     {
-        "text": "presented",
-        "supportText": "prɪˈzentəd"
+        "text": "presented prɪˈzentəd"
     },
     {
-        "text": "rudimentary",
-        "supportText": "[ˌruːdɪˈmentrɪ]"
+        "text": "rudimentary [ˌruːdɪˈmentrɪ]"
     },
     {
-        "text": "version",
-        "supportText": "[ˈvɜːrʒn]"
+        "text": "version [ˈvɜːrʒn]"
     },
     {
-        "text": "development",
-        "supportText": "[dɪˈveləpmənt]"
+        "text": "development [dɪˈveləpmənt]"
     },
     {
-        "text": "identified",
-        "supportText": "[aɪˈdentəˌfaɪd]"
+        "text": "identified [aɪˈdentəˌfaɪd]"
     },
     {
-        "text": "instructor",
-        "supportText": "[ɪnˈstrʌktər]"
+        "text": "instructor [ɪnˈstrʌktər]"
     },
     {
-        "text": "functional",
-        "supportText": "[ˈfʌŋkʃənl]"
+        "text": "functional [ˈfʌŋkʃənl]"
     },
     {
-        "text": "something",
-        "supportText": "[ˈsʌmθɪŋ]"
+        "text": "something [ˈsʌmθɪŋ]"
     },
     {
-        "text": "built",
-        "supportText": "[bɪlt]"
+        "text": "built [bɪlt]"
     },
     {
-        "text": "pronunciation",
-        "supportText": "[prəˌnʌnsɪˈeɪʃn]"
+        "text": "pronunciation [prəˌnʌnsɪˈeɪʃn]"
     },
     {
-        "text": "helping",
-        "supportText": "[ˈhelpɪŋ]"
+        "text": "helping [ˈhelpɪŋ]"
     },
     {
-        "text": "classroom",
-        "supportText": "[ˈklæsruːm]"
+        "text": "classroom [ˈklæsruːm]"
     },
     {
-        "text": "student",
-        "supportText": "[ˈstuːdnt]"
+        "text": "student [ˈstuːdnt]"
     },
     {
-        "text": "pronouncing",
-        "supportText": "[prəˈnaʊnsɪŋ]"
+        "text": "pronouncing [prəˈnaʊnsɪŋ]"
     },
     {
-        "text": "easier",
-        "supportText": "[ˈiːzɪər]"
+        "text": "easier [ˈiːzɪər]"
     },
     {
-        "text": "recording",
-        "supportText": "[rɪˈkɔːrdɪŋ]"
+        "text": "recording [rɪˈkɔːrdɪŋ]"
     },
     {
-        "text": "romantic",
-        "supportText": "[rəʊˈmæntɪk]"
+        "text": "romantic [rəʊˈmæntɪk]"
     },
     {
-        "text": "decide",
-        "supportText": "[dɪˈsaɪd]"
+        "text": "decide [dɪˈsaɪd]"
     },
     {
-        "text": "design",
-        "supportText": "[dɪˈzaɪn]"
+        "text": "design [dɪˈzaɪn]"
     },
     {
-        "text": "whether",
-        "supportText": "[ˈweðər]"
+        "text": "whether [ˈweðər]"
     },
     {
-        "text": "established",
-        "supportText": "[ɪˈstæblɪʃt]"
+        "text": "established [ɪˈstæblɪʃt]"
     },
     {
-        "text": "convention",
-        "supportText": "[kənˈvenʃn]"
+        "text": "convention [kənˈvenʃn]"
     },
     {
-        "text": "innovative",
-        "supportText": "[ˈɪnəveɪtɪv]"
+        "text": "innovative [ˈɪnəveɪtɪv]"
     },
     {
-        "text": "innovate",
-        "supportText": "[ˈɪnəveɪt]"
+        "text": "innovate [ˈɪnəveɪt]"
     },
     {
-        "text": "recommendation",
-        "supportText": "[ˌrekəmenˈdeɪʃn]"
+        "text": "recommendation [ˌrekəmenˈdeɪʃn]"
     },
     {
-        "text": "categories",
-        "supportText": "[ˈkætəˌɡɔːrɪz]"
+        "text": "categories [ˈkætəˌɡɔːrɪz]"
     },
     {
-        "text": "explanatory",
-        "supportText": "[ɪkˈsplænətɔːrɪ]"
+        "text": "explanatory [ɪkˈsplænətɔːrɪ]"
     },
     {
-        "text": "worth",
-        "supportText": "[wɜːrθ]"
+        "text": "worth [wɜːrθ]"
     },
     {
-        "text": "either",
-        "supportText": "[ˈiːðər]"
+        "text": "either [ˈiːðər]"
     },
     {
-        "text": "success",
-        "supportText": "[səkˈses]"
+        "text": "success [səkˈses]"
     },
     {
-        "text": "solution",
-        "supportText": "[səˈluːʃn]"
+        "text": "solution [səˈluːʃn]"
     },
     {
-        "text": "complex",
-        "supportText": "[kəmˈpleks]"
+        "text": "complex [kəmˈpleks]"
     },
     {
-        "text": "ˈvɪdɪəʊ",
-        "supportText": "[video]"
+        "text": "ˈvɪdɪəʊ [video]"
     },
     {
-        "text": "volume",
-        "supportText": "[ˈvɑːljuːm]"
+        "text": "volume [ˈvɑːljuːm]"
     },
     {
-        "text": "definitely",
-        "supportText": "[ˈdefɪnətlɪ]"
+        "text": "definitely [ˈdefɪnətlɪ]"
     },
     {
-        "text": "mobile",
-        "supportText": "[ˈməʊbl]"
+        "text": "mobile [ˈməʊbl]"
     },
     {
-        "text": "extravaganza",
-        "supportText": "[ɪkˌstrævəˈɡænzə]"
+        "text": "extravaganza [ɪkˌstrævəˈɡænzə]"
     },
     {
-        "text": "video",
-        "supportText": "[ˈvɪdɪəʊ]"
+        "text": "video [ˈvɪdɪəʊ]"
     },
     {
-        "text": "expectations",
-        "supportText": "[ˌekspekˈteɪʃənz]"
+        "text": "expectations [ˌekspekˈteɪʃənz]"
     },
     {
-        "text": "meeting",
-        "supportText": "[ˈmiːtɪŋ]"
+        "text": "meeting [ˈmiːtɪŋ]"
     },
     {
-        "text": "confidently",
-        "supportText": "[ˈkɑːnfɪdəntlɪ]"
+        "text": "confidently [ˈkɑːnfɪdəntlɪ]"
     },
     {
-        "text": "concentration",
-        "supportText": "[ˌkɑːnsnˈtreɪʃn]"
+        "text": "concentration [ˌkɑːnsnˈtreɪʃn]"
     },
     {
-        "text": "concentrate",
-        "supportText": "[ˈkɑːnsntreɪt]"
+        "text": "concentrate [ˈkɑːnsntreɪt]"
     },
     {
-        "text": "adventures",
-        "supportText": "[ædˈventʃərz]"
+        "text": "adventures [ædˈventʃərz]"
     },
     {
-        "text": "destination",
-        "supportText": "[ˌdestɪˈneɪʃn]"
+        "text": "destination [ˌdestɪˈneɪʃn]"
     },
     {
-        "text": "concluded",
-        "supportText": "[kənˈkluːdəd]"
+        "text": "concluded [kənˈkluːdəd]"
     },
     {
-        "text": "commiserate",
-        "supportText": "[kəˈmɪz əˌreɪt]"
+        "text": "commiserate [kəˈmɪz əˌreɪt]"
     },
     {
-        "text": "answered",
-        "supportText": "[ˈænsərd]"
+        "text": "answered [ˈænsərd]"
     },
     {
-        "text": "comfortable",
-        "supportText": "[ˈkʌmftəbl]"
+        "text": "comfortable [ˈkʌmftəbl]"
     },
     {
-        "text": "reasonable",
-        "supportText": "[ˈriːznəbl]"
+        "text": "reasonable [ˈriːznəbl]"
     },
     {
-        "text": "companion",
-        "supportText": "[kəmˈpænɪən]"
+        "text": "companion [kəmˈpænɪən]"
     },
     {
-        "text": "very",
-        "supportText": "[ˈverɪ]"
+        "text": "very [ˈverɪ]"
     },
     {
-        "text": "series",
-        "supportText": "[ˈsɪriːz]"
+        "text": "series [ˈsɪriːz]"
     },
     {
-        "text": "talk",
-        "supportText": "[tɔːk]"
+        "text": "talk [tɔːk]"
     },
     {
-        "text": "trying",
-        "supportText": "[ˈtraɪɪŋ]"
+        "text": "trying [ˈtraɪɪŋ]"
     },
     {
-        "text": "three",
-        "supportText": "[θriː]"
+        "text": "three [θriː]"
     },
     {
-        "text": "days",
-        "supportText": "[ˈdeɪz]"
+        "text": "days [ˈdeɪz]"
     },
     {
-        "text": "topics",
-        "supportText": "[ˈtɑːpɪks]"
+        "text": "topics [ˈtɑːpɪks]"
     },
     {
-        "text": "code",
-        "supportText": "[kəʊd]"
+        "text": "code [kəʊd]"
     },
     {
-        "text": "tracking",
-        "supportText": "[ˈtrækɪŋ]"
+        "text": "tracking [ˈtrækɪŋ]"
     },
     {
-        "text": "recommending",
-        "supportText": "[ˌrekəˈmendɪŋ]"
+        "text": "recommending [ˌrekəˈmendɪŋ]"
     }
 ]
 
