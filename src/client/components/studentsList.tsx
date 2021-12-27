@@ -1,6 +1,7 @@
 import "./studentsList.scss";
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 function StudentsList(props) {
     const { students } = props;
@@ -11,9 +12,11 @@ function StudentsList(props) {
                 {students.map(student => 
                     <li className="student" key = {student.id}>
                         <span className="student--name">{student.name}</span>
-                        <button className="student--practiceBtn btn">
-                            Practice
-                        </button>
+                        <Link to={`/teachers/sarah/students/${student.name}`}>
+                            <button className="student--practiceBtn btn">
+                                Practice
+                            </button>
+                        </Link>
                     </li>
                 )}
             </ol>
