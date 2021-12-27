@@ -49,7 +49,7 @@ ReactDOM.render(
                 <Routes>
                     <Route path="/" element={<App/>}>
                         <Route index element={<Login/>}/>
-                        <Route path="/teacher/sarah" element={<StudentsList students={students}/>}/>
+                        <Route path="/teachers/sarah" element={<StudentsList students={students}/>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>
