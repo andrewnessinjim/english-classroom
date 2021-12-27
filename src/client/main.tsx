@@ -9,9 +9,9 @@ import {
     InMemoryCache
 } from "@apollo/client";
 
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Main from "./components/Main";
+import Footer from "./components/rootTemplate/footer";
+import Header from "./components/rootTemplate/header";
+import Main from "./components/rootTemplate/htmlMain";
 
 
 const client = new ApolloClient({

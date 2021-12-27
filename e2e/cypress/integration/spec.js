@@ -2,6 +2,6 @@
 
 it('displays hello world', () => {
     cy.visit('/');
-    cy.get('body h1')
-        .should('contain', 'Hello World!');
+    cy.get('.site-heading')
+        .should('contain', 'Sarah\'s Classroom');
 });

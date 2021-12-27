@@ -1,0 +1,10 @@
+@import "../../variables.scss";
+
+.main-extension {
+    flex: 1;
+}
+
+.main {
+    max-width: $max-site-width;
+    margin: auto;
+}
