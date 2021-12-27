@@ -14,7 +14,7 @@ import Footer from "./components/rootTemplate/footer";
 import Header from "./components/rootTemplate/header";
 import StudentsList from "./components/studentsList";
 import Login from "./components/login";
-import PronunciationPractice from "./components/pronunciationPractice";
+import Pronunciation from "./components/pronunciation/pronunciation";
 
 
 const client = new ApolloClient({
@@ -50,8 +50,8 @@ ReactDOM.render(
                 <Routes>
                     <Route path="/" element={<App/>}>
                         <Route index element={<Login/>}/>
-                        <Route path="/teachers/sarah" element={<StudentsList students={students}/>}/>
-                        <Route path="/teachers/sarah/students/:studentName" element={<PronunciationPractice/>}/>
+                        <Route path="/teachers/:teacherName" element={<StudentsList students={students}/>}/>
+                        <Route path="/teachers/:teacherName/students/:studentName" element={<Pronunciation/>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>

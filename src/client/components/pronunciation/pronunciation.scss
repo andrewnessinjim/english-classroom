@@ -1,0 +1,9 @@
+.pronunciation {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .pronunciation--heading {
+        margin: 1em 0;
+    }
+}
