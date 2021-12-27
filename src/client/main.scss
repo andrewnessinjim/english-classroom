@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 @font-face {
     font-family: "Lato";
     src: url("./fonts/Lato-Regular.ttf") format("truetype");
@@ -21,4 +23,21 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+.main-extension {
+    flex: 1;
+}
+
+.main {
+    max-width: $max-site-width;
+    margin: auto;
+    height: 100%;
+}
+
+.btn {
+    padding: 0.25rem 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
 }

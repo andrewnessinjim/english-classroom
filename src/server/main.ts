@@ -59,7 +59,7 @@ async function setUpRoutes(app) {
         res.end(JSON.stringify(health));
     });
 
-    app.get("/", async (req, res) => {
+    app.get(["/","/teacher/:username"], async (req, res) => {
         res.render("index",{
             useExternalStyles,
             scriptRoot

@@ -2,6 +2,7 @@ import "./main.scss"
 
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter, Outlet, Routes, Route, Link } from "react-router-dom";
 
 import {
     ApolloProvider,
@@ -11,7 +12,8 @@ import {
 
 import Footer from "./components/rootTemplate/footer";
 import Header from "./components/rootTemplate/header";
-import Main from "./components/rootTemplate/htmlMain";
+import StudentsList from "./components/studentsList";
+import Login from "./components/login";
 
 
 const client = new ApolloClient({
@@ -19,11 +21,39 @@ const client = new ApolloClient({
     cache: new InMemoryCache()
 })
 
-ReactDOM.render(
-    <ApolloProvider client={client}>
+function App() {
+    return <>
         <Header/>
-        <Main/>
+        <div className="main-extension">
+            <main className="main">
+                
+                <Outlet/>
+            </main>
+        </div>
         <Footer/>
-    </ApolloProvider>,
+    </>
+}
+
+const students = [
+    {name: "Andrew", id: 1},
+    {name: "Nessin", id: 2},
+    {name: "Dan", id: 3},
+    {name: "Nelson", id: 4},
+    {name: "Tiny Mahima", id: 5},
+]
+
+ReactDOM.render(
+    <React.StrictMode>
+        <ApolloProvider client={client}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<App/>}>
+                        <Route index element={<Login/>}/>
+                        <Route path="/teacher/sarah" element={<StudentsList students={students}/>}/>
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </ApolloProvider>
+    </React.StrictMode>,
     document.getElementById("mount")
 );
