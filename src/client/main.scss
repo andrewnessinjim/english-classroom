@@ -1,75 +1,38 @@
 @font-face {
-    font-family: "Merienda";
-    src: url("./fonts/Merienda-Regular.ttf") format("truetype");
+    font-family: "Lato";
+    src: url("./fonts/Lato-Regular.ttf") format("truetype");
 }
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 body {
     background: #333;
     color: #eeeeee;
-    font-family: "Merienda", cursive;
+    font-family: "Lato", sans-serif; 
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
-h1 {
-    text-align: center;
-    margin: auto;
-    max-width: 1200px;
-}
-
-.tool-sets-container {
+#mount {
     display: flex;
     flex-direction: column;
-    margin: auto;
-    text-align: right;
-    max-width: fit-content;
+    height: 100%;
+}
+.footer, .header {
+    background-color: #C4C4C4;
+    height: 58px;
+    width: 100%;
+}
+.footer {
+    height: 32px;
 }
 
-.tool-set-container {
-    display: flex;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    h2 {
-        font-size: 14px;
-        width: 180px;
-    }
-}
-
-.logos-container {
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-}
-
-.logo {
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-@media (min-width: 360px) {
-    h1 {
-        font-size: 42px;
-    }
-    .tool-set-container {
-        h2 {
-            font-size: 12px;
-            width: 150px;
-        }
-    }
-}
-
-@media (min-width: 680px) {
-    h1 {
-        font-size: 72px;
-    }
-    .tool-set-container {
-        h2 {
-            font-size: 16px;
-            width: 280px;
-        }
-    }
-}
-
-@media (min-width: 1000px) {
-    h1 {
-        font-size: 120px;
-    }
+.main {
+    flex: 1;
+    height: 100%;
+    width: 100%;
 }
