@@ -10,20 +10,17 @@
     margin: auto;
     flex-direction: column;
 
-    input {
-        font-size: 1.25rem;
-        margin: 0.25em;
-        border: none;
-        border-radius: 5px;
-        background: $light-foreground;
+    input, button {
         padding: 0.25em;
+        margin: 0.25em;
+        border-radius: 5px;
+        font-size: 1.25rem;
+        background: $light-foreground;
+    }
+    input {
+        border: none;
     }
     button {
-        padding: 0.25em;
-        margin: 0.25em;
-        border-radius: 5px;
-        font-size: 1.25rem;
-        background: $light-foreground;
         transition: 250ms all;
         width: 50%;
         &:hover {
