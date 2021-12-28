@@ -12,8 +12,8 @@ function PracticeTextRow(props) {
                 className="practiceTextRow--input"
                 value={text}
                 onChange={e => setText(e.target.value)}
-                onBlur={_ => handleSubmission()}
-                onKeyDown={e => e.key === 'Enter' ? handleSubmission(): null}
+                onBlur={_ => handleSubmission(false)}
+                onKeyDown={e => e.key === 'Enter' ? handleSubmission(true): null}
                 />
             <div className="practiceTextRow--rating">
                 <RatingScale
@@ -23,9 +23,11 @@ function PracticeTextRow(props) {
         </li>
     )
 
-    function handleSubmission(): void {
+    function handleSubmission(shouldBlur): void {
         props.onChangeConfirm(text);
-        document.activeElement.blur();
+        if (shouldBlur && document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+        }
     }
 }
 
