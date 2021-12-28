@@ -23,6 +23,14 @@ function Pronunciation() {
         
     }
 
+    function addPracticeText(text) {
+        setPracticeTexts(prevPracticeTexts => {
+            const newPracticeTexts = _.cloneDeep(prevPracticeTexts);
+            newPracticeTexts.unshift({id: prevPracticeTexts.length + 1, text})
+            return newPracticeTexts;
+        });
+    }
+
     return (
         <section className="pronunciation">
             <h2 className="pronunciation--heading">Pronunciation Practice - {`${studentName}`}</h2>
@@ -30,7 +38,7 @@ function Pronunciation() {
                 practiceTexts={practiceTexts}
                 onRate={updateRating}
             />
-            <PlainInput onSubmit={value => console.log(`${value} was submitted`)}/>
+            <PlainInput onSubmit={addPracticeText}/>
         </section>
     )
 }
