@@ -20,7 +20,6 @@ function Pronunciation() {
             newPracticeTexts.find(practiceText => practiceText.id === id).latestRating = rating;
             return newPracticeTexts;
         });
-        
     }
 
     function addPracticeText(text) {
@@ -31,12 +30,21 @@ function Pronunciation() {
         });
     }
 
+    function updateText(id, text) {
+        setPracticeTexts(prevPracticeTexts => {
+            const newPracticeTexts = _.cloneDeep(prevPracticeTexts);
+            newPracticeTexts.find(practiceText => practiceText.id === id).text = text;
+            return newPracticeTexts;
+        });
+    }
+
     return (
         <section className="pronunciation">
             <h2 className="pronunciation--heading">Pronunciation Practice - {`${studentName}`}</h2>
             <PracticeList 
                 practiceTexts={practiceTexts}
                 onRate={updateRating}
+                onChangeConfirm={updateText}
             />
             <PlainInput onSubmit={addPracticeText}/>
         </section>

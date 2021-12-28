@@ -7,7 +7,7 @@ import PracticeTextRow from "./practiceTextRow";
 
 
 function PracticeList(props) {
-    const {practiceTexts, onRate} = props;
+    const {practiceTexts, onRate, onChangeConfirm} = props;
 
     return (
         <ol className="practice-list-list">
@@ -19,6 +19,7 @@ function PracticeList(props) {
                         key={practice.id}
                         id={practice.id}
                         onRate={rating => onRate(practice.id, rating)}
+                        onChangeConfirm={text => onChangeConfirm(practice.id, text)}
                     />
             )}
         </ol>

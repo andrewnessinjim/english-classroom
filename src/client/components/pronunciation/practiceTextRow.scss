@@ -4,15 +4,29 @@
     border-radius: 5px;
     display: flex;
     align-items: center;
-    padding: 0.75em 0;
+    padding: 2px 5px;
     width: 100%;
 
     &:hover {
         background: $hover-background;
     }
 
-    .practiceTextRow--text {
+    .practiceTextRow--input {
         width: 65%;
+        border: none;
+        background: $dark-background;
+        color:$light-foreground;
+        height: 100%;
+        font-size: 1rem;
+        padding: 0.75em 0;
+
+        &:hover {
+            background: $hover-background;
+        }
+
+        &:focus {
+            outline: 2px solid white;
+        }
     }
     .practiceTextRow--rating {
         width: 35%;
