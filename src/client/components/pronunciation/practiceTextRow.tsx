@@ -1,13 +1,13 @@
 import "./practiceTextRow.scss";
 
 import React from "react";
-import StarRating from "./starRating";
+import RatingScale from "./ratingScale";
 
 function PracticeTextRow(props) {
     return (
         <div className="practiceTextRow">
             <div className="practiceTextRow--text">{props.text}</div>
-            <div className="practiceTextRow--rating"><StarRating/></div>
+            <div className="practiceTextRow--rating"><RatingScale/></div>
         </div>
     )
 }
