@@ -1,7 +1,7 @@
 @import "../variables.scss";
 
 .students {
-    max-width: 640px;
+    max-width: $medium-max-width;
     margin: auto;
     .students--heading {
         margin: 1em 0 ;

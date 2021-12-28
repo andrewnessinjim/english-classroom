@@ -1,8 +1,10 @@
+@import "../../variables.scss";
+
 .pronunciation {
     display: flex;
     flex-direction: column;
     height: 100%;
-    max-width: 760px;
+    max-width: $medium-max-width;
     margin: auto;
 
     .pronunciation--heading {
