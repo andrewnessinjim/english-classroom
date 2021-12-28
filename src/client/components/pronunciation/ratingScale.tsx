@@ -13,7 +13,11 @@ function RatingScale(props) {
         <div className="rating-scale">
             {[...Array(maxRating + 1).keys()].slice(1).map(
                 rating => 
-                    <div className={`rating-scale--measure ${rating <= currRating ? "filled" : ""}`}>
+                    <div
+                        key={rating}
+                        className={`rating-scale--measure ${rating <= currRating ? "filled" : ""}`}
+                        onClick={() => props.onRate(rating)}
+                    >
                         <span className="value">{rating}</span>
                     </div>
                 )}

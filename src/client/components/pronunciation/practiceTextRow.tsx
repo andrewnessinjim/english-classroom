@@ -5,10 +5,14 @@ import RatingScale from "./ratingScale";
 
 function PracticeTextRow(props) {
     return (
-        <div className="practiceTextRow">
+        <li className="practiceTextRow">
             <div className="practiceTextRow--text">{props.text}</div>
-            <div className="practiceTextRow--rating"><RatingScale currRating={props.latestRating}/></div>
-        </div>
+            <div className="practiceTextRow--rating">
+                <RatingScale
+                    currRating={props.latestRating}
+                    onRate={props.onRate}/>
+            </div>
+        </li>
     )
 }
 

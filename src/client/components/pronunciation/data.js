@@ -796,6 +796,10 @@ const practiceText = [
     }
 ]
 
-export default function getPracticeText(size) {
+export function getPracticeText(size) {
     return practiceText.slice(0, size);
+}
+
+export function setRating(id, rating) {
+    practiceText.find(practice => practice.id === id).latestRating = rating;
 }
