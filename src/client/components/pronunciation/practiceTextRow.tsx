@@ -7,7 +7,7 @@ function PracticeTextRow(props) {
     return (
         <div className="practiceTextRow">
             <div className="practiceTextRow--text">{props.text}</div>
-            <div className="practiceTextRow--rating"><RatingScale /></div>
+            <div className="practiceTextRow--rating"><RatingScale currRating={props.latestRating}/></div>
         </div>
     )
 }

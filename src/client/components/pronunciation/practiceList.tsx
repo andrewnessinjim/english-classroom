@@ -6,7 +6,7 @@ import getPracticeText from "./data";
 
 import PracticeTextRow from "./practiceTextRow";
 
-const practiceTexts =  getPracticeText(50);
+const practiceTexts =  getPracticeText(20);
 
 function PracticeList() {
     return (
@@ -14,7 +14,7 @@ function PracticeList() {
             {practiceTexts.map(
                 practice => 
                     <li key={practice.text}>
-                        <PracticeTextRow text={practice.text}/>
+                        <PracticeTextRow text={practice.text} latestRating={practice.latestRating}/>
                     </li>
             )}
         </ol>
