@@ -8,7 +8,7 @@ import PracticeTextRow from "./practiceTextRow";
 
 
 function PracticeList() {
-    const [practiceTexts, setPracticeTexts] = useState(getPracticeText(20));
+    const [practiceTexts, setPracticeTexts] = useState(getPracticeText());
 
     return (
         <ol className="practice-list-list">
