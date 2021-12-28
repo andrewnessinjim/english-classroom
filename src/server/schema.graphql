@@ -1,19 +1,18 @@
 type Query {
-    homePage: HomePage!
+    _dummy: String
 }
 
-type HomePage {
-    heading: String!
-    toolSets: [ToolSet]!
+type Mutation {
+    login(username: String!, password: String!): AuthPayload
 }
 
-type ToolSet {
-    heading: String!
-    tools: [Tool]!
+type AuthPayload {
+    token: String
+    user: User
 }
 
-type Tool {
-    logoKey: String!
-    toolTip: String!
-    logoHeightPx: Int
+type User {
+    id: ID!
+    username: String!
+    role: String!
 }

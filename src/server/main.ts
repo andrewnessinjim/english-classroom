@@ -7,7 +7,8 @@ import { ApolloServer } from "apollo-server-express";
 import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
 
 import * as db from "./dao/db";
-import Query from "./resolvers/Query";
+import Mutation from "./resolvers/Mutation";
+
 import checkHealth from "./health";
 
 const PORT = process.env.PORT || 3000;
@@ -31,7 +32,7 @@ async function startApolloServer(app) {
             "utf-8"
         ),
         resolvers: {
-            Query
+            Mutation
         },
         plugins: [ ApolloServerPluginDrainHttpServer({httpServer}) ]
     });
