@@ -1,3 +1,4 @@
 node_modules
 build
 e2e/cypress/videos
+.vscode/vscode-chrome-debug-userdatadir
