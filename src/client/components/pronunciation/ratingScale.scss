@@ -4,6 +4,11 @@
     fill: white;
 }
 
+@mixin filled {
+    background: goldenrod;
+    color: black;
+}
+
 .rating-scale--measure {
     background: white;
     width: 32px;
@@ -19,8 +24,11 @@
     }
 
     &:hover {
-        background: goldenrod;
+        @include filled;
         cursor: pointer;
-        color: black;
+    }
+
+    &.filled {
+        @include filled;
     }
 }

@@ -2,14 +2,21 @@ import "./ratingScale.scss";
 
 import React from "react";
 
-function RatingScale() {
+const DEFAULT_MAX_RATING = 5;
+const DEFAULT_CURR_RATING = 0;
+
+function RatingScale(props) {
+    const maxRating = props.maxRating ? props.maxRating : DEFAULT_MAX_RATING;
+    const currRating = props.currRating ? props.currRating : DEFAULT_CURR_RATING;
+
     return (
         <div className="rating-scale">
-            <div className="rating-scale--measure"><span className="value">1</span></div>
-            <div className="rating-scale--measure"><span className="value">2</span></div>
-            <div className="rating-scale--measure"><span className="value">3</span></div>
-            <div className="rating-scale--measure"><span className="value">4</span></div>
-            <div className="rating-scale--measure"><span className="value">5</span></div>
+            {[...Array(maxRating + 1).keys()].slice(1).map(
+                rating => 
+                    <div className={`rating-scale--measure ${rating <= currRating ? "filled" : ""}`}>
+                        <span className="value">{rating}</span>
+                    </div>
+                )}
         </div>
     )
 }
