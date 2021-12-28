@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    max-width: 760px;
+    margin: auto;
 
     .pronunciation--heading {
         margin: 1em 0;
