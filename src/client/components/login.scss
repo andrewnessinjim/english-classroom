@@ -1,3 +1,40 @@
+@import "../variables.scss";
+
+.login-container {
+    display: flex;
+    height: 100%;
+}
+
+.login-form{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+
+    input {
+        font-size: 1.25rem;
+        margin: 0.25em;
+        border: none;
+        border-radius: 5px;
+        background: $light-foreground;
+        padding: 0.25em;
+    }
+    button {
+        padding: 0.25em;
+        margin: 0.25em;
+        border-radius: 5px;
+        font-size: 1.25rem;
+        background: $light-foreground;
+        transition: 250ms all;
+        width: 50%;
+        &:hover {
+            background: $hover-background;
+            cursor: pointer;
+            color: white;
+        }
+    }
+}
+
+
 .loginBtn {
     margin: auto;
     display: flex;

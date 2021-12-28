@@ -5,11 +5,13 @@ import {Link} from "react-router-dom";
 
 function Login(){
     return (
-        <Link className="loginBtn" to="/teachers/sarah" >
-            <button className="btn">
-                Login
-            </button>
-        </Link>
+        <section className="login-container">
+            <div className="login-form">
+                <input type="text" placeholder="Username"/>
+                <input type="password" placeholder="Password"/>
+                <button>Login</button>
+            </div>
+        </section>
     )
 }
 
