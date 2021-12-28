@@ -13,7 +13,7 @@ function Pronunciation() {
         <section className="pronunciation">
             <h2 className="pronunciation--heading">Pronunciation Practice - {`${studentName}`}</h2>
             <PracticeList/>
-            <PlainInput/>
+            <PlainInput onSubmit={value => console.log(`${value} was submitted`)}/>
         </section>
     )
 }
