@@ -24,6 +24,10 @@ body {
     overflow: hidden;
 }
 
+input, select, textarea, button{
+    font-family:inherit;
+}
+
 #mount {
     display: flex;
     flex-direction: column;
