@@ -41,18 +41,13 @@ function Pronunciation() {
         variables: {studentId}
     });
 
-    const {data, loading, error} = useQuery(FETCH_STUDENT_NAME_OP, {
+    const {data} = useQuery(FETCH_STUDENT_NAME_OP, {
         variables: {studentId}
     });
 
     let studentName = data && data.fetchStudent.name;
 
-    const [
-        serverUpdateRating, 
-        {   data: updateRatingData,
-            loading: updateRatingLoading,
-            error: updateRatingError
-        }] = useMutation(UPDATE_RATING_OP, {
+    const [serverUpdateRating] = useMutation(UPDATE_RATING_OP, {
             refetchQueries: [
                 FETCH_PRACTICE_TEXTS_OP
             ]
