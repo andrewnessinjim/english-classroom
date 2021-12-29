@@ -1,8 +1,7 @@
 import "./practiceList.scss";
 
-import React, {useState} from "react";
+import React from "react";
 
-import {getPracticeText, setRating} from "./data";
 import PracticeTextRow from "./practiceTextRow";
 
 

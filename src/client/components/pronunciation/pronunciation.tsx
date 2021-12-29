@@ -1,13 +1,12 @@
 import "./pronunciation.scss";
 
-import React, {useState} from "react";
+import React from "react";
 import _ from "lodash";
 import {useParams} from "react-router-dom";
 
 import PlainInput from "./plainInput";
 import PracticeList from "./practiceList";
-import {getPracticeText, setRating} from "./data";
-import { useQuery, gql, useMutation } from "@apollo/client";
+import { useQuery, gql} from "@apollo/client";
 
 const FETCH_STUDENT_NAME_OP = gql`
 query FetchStudent($studentId: String!) {
