@@ -65,6 +65,25 @@ function Pronunciation() {
             FETCH_PRACTICE_TEXTS_OP
         ]
     })
+
+    return (
+        !user.token ? 
+            <Navigate to="/" />
+            :
+            <section className="pronunciation">
+                <h2 className="pronunciation--heading">Pronunciation Practice - {`${studentName}`}</h2>
+                {!practiceTexts.data || !practiceTexts.data.fetchPracticeTexts ?
+                    "Loading ":
+                    <PracticeList 
+                        practiceTexts={practiceTexts.data.fetchPracticeTexts}
+                        onRate={updateRating}
+                        onChangeConfirm={updateText}
+                    />}
+                <PlainInput onSubmit={addPracticeText}/>
+            </section>
+            
+    );
+
     function updateRating(id, newRating) {
         serverUpdateRating({
             variables: {
@@ -89,24 +108,6 @@ function Pronunciation() {
     function updateText(id, text) {
 
     }
-
-    return (
-        !user.token ? 
-            <Navigate to="/" />
-            :
-            <section className="pronunciation">
-                <h2 className="pronunciation--heading">Pronunciation Practice - {`${studentName}`}</h2>
-                {!practiceTexts.data || !practiceTexts.data.fetchPracticeTexts ?
-                    "Loading ":
-                    <PracticeList 
-                        practiceTexts={practiceTexts.data.fetchPracticeTexts}
-                        onRate={updateRating}
-                        onChangeConfirm={updateText}
-                    />}
-                <PlainInput onSubmit={addPracticeText}/>
-            </section>
-            
-    )
 }
 
 export default Pronunciation;
