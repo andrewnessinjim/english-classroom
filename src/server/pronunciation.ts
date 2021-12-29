@@ -6,6 +6,46 @@ async function fetchPracticeTexts(studentId) {
     return pronunciationDoc.practiceTexts;
 }
 
+async function updateText(teacherId, studentId, practiceTextId, newText){
+    await db.get().collection("pronunciation").updateOne(
+        {
+            studentId: new ObjectId(studentId),
+            teacherId: new ObjectId(teacherId),
+            "practiceTexts._id": new ObjectId(practiceTextId)
+        },
+        {
+            $set: {"practiceTexts.$.text":newText}
+        });
+    return true;
+}
+
+async function addPracticeText(teacherId, studentId, text){
+    await db.get().collection("pronunciation").updateOne(
+        {
+            studentId: new ObjectId(studentId),
+            teacherId: new ObjectId(teacherId)
+        }, {
+            $push: {practiceTexts: {_id: new ObjectId(), text}}
+        }
+    )
+}
+
+async function updateRating(teacherId, studentId, practiceTextId, newRating){
+    await db.get().collection("pronunciation").updateOne(
+        {
+            studentId: new ObjectId(studentId),
+            teacherId: new ObjectId(teacherId),
+            "practiceTexts._id": new ObjectId(practiceTextId)
+        },
+        {
+            $set: {"practiceTexts.$.latestRating":newRating}
+        });
+    return true;
+}
+
 export {
-    fetchPracticeTexts
+    fetchPracticeTexts,
+    updateText,
+    addPracticeText,
+    updateRating
 }
