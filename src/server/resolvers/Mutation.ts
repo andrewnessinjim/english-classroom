@@ -1,4 +1,4 @@
-import { login } from "../auth/login"
+import { login } from "../auth"
 
 
 function loginResolver(parent, args, context, info) {

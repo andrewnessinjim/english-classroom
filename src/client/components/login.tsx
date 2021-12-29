@@ -70,6 +70,7 @@ function Login(){
         user.username = data.login.user.username;
         user.role = data.login.user.role;
         user.id = data.login.user.id;
+        localStorage.setItem("token", user.token);
     }
 }
 

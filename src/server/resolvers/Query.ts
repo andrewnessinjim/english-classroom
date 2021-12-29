@@ -1,10 +1,9 @@
-import homepage from "../dao/homepage";
+import { fetchStudents } from "../students";
 
-async function homePage() {
-    const homePage = await homepage.getHomePageData();
-    return homePage;
+async function fetchStudentsResolver(parent, args, context, info) {
+    return await fetchStudents(args.teacherId, context.user);
 }
 
 export default {
-    homePage: homePage
+    fetchStudents: fetchStudentsResolver
 }

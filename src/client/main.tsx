@@ -7,8 +7,11 @@ import { BrowserRouter, Outlet, Routes, Route, Link } from "react-router-dom";
 import {
     ApolloProvider,
     ApolloClient,
-    InMemoryCache
+    InMemoryCache,
+    createHttpLink
 } from "@apollo/client";
+import { setContext } from '@apollo/client/link/context';
+
 
 import Footer from "./components/rootTemplate/footer";
 import Header from "./components/rootTemplate/header";
@@ -17,9 +20,22 @@ import Login from "./components/login";
 import Pronunciation from "./components/pronunciation/pronunciation";
 import { UserContext } from "./context";
 
+const authLink = setContext((_, { headers }) => {
+    const token = localStorage.getItem('token');
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : "",
+      }
+    }
+});
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
 
 const client = new ApolloClient({
-    uri: '/graphql',
+    link: authLink.concat(httpLink),
     cache: new InMemoryCache()
 })
 

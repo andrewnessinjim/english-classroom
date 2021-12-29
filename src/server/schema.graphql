@@ -1,5 +1,6 @@
 type Query {
     _dummy: String
+    fetchStudents(teacherId: String!): [Student]
 }
 
 type Mutation {
@@ -15,4 +16,10 @@ type User {
     id: ID!
     username: String!
     role: String!
+}
+
+type Student {
+    _id: ID!
+    teacherId: String!
+    name: String!
 }

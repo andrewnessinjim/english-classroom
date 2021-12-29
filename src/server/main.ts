@@ -8,8 +8,10 @@ import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
 
 import * as db from "./dao/db";
 import Mutation from "./resolvers/Mutation";
+import Query from "./resolvers/Query";
 
 import checkHealth from "./health";
+import { fetchUserInfo } from "./auth";
 
 const PORT = process.env.PORT || 3000;
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -32,9 +34,16 @@ async function startApolloServer(app) {
             "utf-8"
         ),
         resolvers: {
+            Query,
             Mutation
         },
-        plugins: [ ApolloServerPluginDrainHttpServer({httpServer}) ]
+        plugins: [ ApolloServerPluginDrainHttpServer({httpServer}) ],
+        context: async ({req}) => {
+            return {
+                ...req,
+                user: req && req.headers ? await fetchUserInfo(req.headers.authorization): null
+            }
+        }
     });
 
     await server.start();
