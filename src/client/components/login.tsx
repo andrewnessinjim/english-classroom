@@ -3,7 +3,7 @@ import "./login.scss"
 import React, { useState, useContext } from "react";
 import { useMutation, gql } from "@apollo/client";
 import { Navigate } from "react-router-dom";
-import { UserContext } from "../context";
+import { token, UserContext } from "../context";
 
 const LOGIN_OP = gql`
 mutation Login($username: String!, $password: String!) {
@@ -70,7 +70,7 @@ function Login(){
         user.username = data.login.user.username;
         user.role = data.login.user.role;
         user.id = data.login.user.id;
-        localStorage.setItem("token", user.token);
+        token.token = user.token;
     }
 }
 

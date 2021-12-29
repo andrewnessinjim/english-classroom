@@ -18,14 +18,14 @@ import Header from "./components/rootTemplate/header";
 import StudentsList from "./components/studentsList";
 import Login from "./components/login";
 import Pronunciation from "./components/pronunciation/pronunciation";
-import { UserContext } from "./context";
+import { token, UserContext } from "./context";
 
 const authLink = setContext((_, { headers }) => {
-    const token = localStorage.getItem('token');
+    const authToken = token.token;
     return {
       headers: {
         ...headers,
-        authorization: token ? `Bearer ${token}` : "",
+        authorization: authToken ? `Bearer ${authToken}` : "",
       }
     }
 });
