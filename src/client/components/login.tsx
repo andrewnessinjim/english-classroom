@@ -2,7 +2,7 @@ import "./login.scss"
 
 import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const LOGIN_OP = gql`
 mutation Login($username: String!, $password: String!) {
@@ -20,23 +20,22 @@ function Login(){
     const [password, setPassword] = useState("");
     const [login, {data, loading, error}] = useMutation(LOGIN_OP);
     const [isTyping, setIsTyping] = useState(false);
-    const navigate = useNavigate();
-
-    if(data && data.login && data.login.token) {
-        navigate("/teachers/sarah");
-    }
+    const isLoggedIn = data && data.login && data.login.token;
 
     return (
-        <section className="login-container">
-            <form className="login-form">
-                <input type="text" placeholder="Username" value={username} onChange={e => handleUsernameChange(e.target.value)}/>
-                <input type="password" placeholder="Password" value={password} onChange={e => handlePasswordChange(e.target.value)}/>
-                <button onClick={handleLogin}>Login</button>
-                <p className={`error ${error && !isTyping? "visible": "invisible"}`}>
-                    {`${error? error.message :"&nbsp;"}`}
-                </p>
-            </form>
-        </section>
+        isLoggedIn ? 
+            <Navigate to="/teachers/sarah" />
+            :
+            <section className="login-container">
+                <form className="login-form">
+                    <input type="text" placeholder="Username" value={username} onChange={e => handleUsernameChange(e.target.value)}/>
+                    <input type="password" placeholder="Password" value={password} onChange={e => handlePasswordChange(e.target.value)}/>
+                    <button onClick={handleLogin}>Login</button>
+                    <p className={`error ${error && !isTyping? "visible": "invisible"}`}>
+                        {`${error? error.message :"&nbsp;"}`}
+                    </p>
+                </form>
+            </section>
     )
 
     function handleUsernameChange(username){
