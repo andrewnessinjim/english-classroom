@@ -1,12 +1,13 @@
 import "./pronunciation.scss";
 
-import React from "react";
+import React, {useContext} from "react";
 import _ from "lodash";
-import {useParams} from "react-router-dom";
+import {Navigate, useParams} from "react-router-dom";
 
 import PlainInput from "./plainInput";
 import PracticeList from "./practiceList";
-import { useQuery, gql} from "@apollo/client";
+import { useQuery, gql, useMutation} from "@apollo/client";
+import { UserContext } from "../../context";
 
 const FETCH_STUDENT_NAME_OP = gql`
 query FetchStudent($studentId: String!) {
@@ -25,7 +26,14 @@ query FetchPracticeTexts($studentId: String!) {
   }
 }
 `;
+
+const UPDATE_RATING_OP = gql`
+mutation UpdateRating($teacherId: String!, $studentId: String!, 
+                        $practiceTextId: String!, $newRating: Int!) {
+  updateRating(teacherId: $teacherId, studentId: $studentId, practiceTextId: $practiceTextId, newRating: $newRating)
+}`
 function Pronunciation() {
+    const user = useContext(UserContext);
     let params = useParams();
     let {studentId} = params;
 
@@ -39,7 +47,22 @@ function Pronunciation() {
 
     let studentName = data && data.fetchStudent.name;
 
-    function updateRating(id, rating) {
+    const [
+        serverUpdateRating, 
+        {   data: updateRatingData,
+            loading: updateRatingLoading,
+            error: updateRatingError
+        }] = useMutation(UPDATE_RATING_OP)
+
+    function updateRating(id, newRating) {
+        serverUpdateRating({
+            variables: {
+                teacherId: user.id,
+                studentId,
+                practiceTextId: id,
+                newRating
+            }
+        })
        /*  setPracticeTexts(prevPracticeTexts => {
             const newPracticeTexts = _.cloneDeep(prevPracticeTexts);
             newPracticeTexts.find(practiceText => practiceText.id === id).latestRating = rating;
@@ -64,17 +87,21 @@ function Pronunciation() {
     }
 
     return (
-        <section className="pronunciation">
-            <h2 className="pronunciation--heading">Pronunciation Practice - {`${studentName}`}</h2>
-            {!practiceTexts.data || !practiceTexts.data.fetchPracticeTexts ?
-                "Loading ":
-                <PracticeList 
-                    practiceTexts={practiceTexts.data.fetchPracticeTexts}
-                    onRate={updateRating}
-                    onChangeConfirm={updateText}
-                />}
-            <PlainInput onSubmit={addPracticeText}/>
-        </section>
+        !user.token ? 
+            <Navigate to="/" />
+            :
+            <section className="pronunciation">
+                <h2 className="pronunciation--heading">Pronunciation Practice - {`${studentName}`}</h2>
+                {!practiceTexts.data || !practiceTexts.data.fetchPracticeTexts ?
+                    "Loading ":
+                    <PracticeList 
+                        practiceTexts={practiceTexts.data.fetchPracticeTexts}
+                        onRate={updateRating}
+                        onChangeConfirm={updateText}
+                    />}
+                <PlainInput onSubmit={addPracticeText}/>
+            </section>
+            
     )
 }
 
