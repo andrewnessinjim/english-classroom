@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 async function login(username, password) {
     const userDoc = await db.get().collection("users").findOne({username});
     if(!userDoc) {
-        throw new Error("User does not exist in DB");
+        throw new Error("User does not exist");
     }
 
     if(!await bcrypt.compare(password, userDoc.password)) {
