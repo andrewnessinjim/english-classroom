@@ -52,7 +52,11 @@ function Pronunciation() {
         {   data: updateRatingData,
             loading: updateRatingLoading,
             error: updateRatingError
-        }] = useMutation(UPDATE_RATING_OP)
+        }] = useMutation(UPDATE_RATING_OP, {
+            refetchQueries: [
+                FETCH_PRACTICE_TEXTS_OP
+            ]
+        })
 
     function updateRating(id, newRating) {
         serverUpdateRating({
