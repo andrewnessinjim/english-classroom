@@ -1,5 +1,6 @@
 import * as db from "../dao/db";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 async function login(username, password) {
     const userDoc = await db.get().collection("users").findOne({username});
@@ -11,13 +12,15 @@ async function login(username, password) {
         throw new Error("Password is incorrect");
     }
 
+    const user = {
+        id: userDoc._id.toString(),
+        username: userDoc.username,
+        role: userDoc.role
+    };
+
     return {
-        token: `a token for ${username}`,
-        user: {
-            id: userDoc._id.toString(),
-            username: userDoc.username,
-            role: userDoc.role
-        }
+        token: jwt.sign(user, process.env.JWT_PRIVATE_KEY),
+        user
     }
 }
 
