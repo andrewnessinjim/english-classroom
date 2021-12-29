@@ -32,7 +32,12 @@ function Pronunciation() {
     const practiceTexts = useQuery(FETCH_PRACTICE_TEXTS_OP, {
         variables: {studentId}
     });
-    const studentName = "Andrew";
+
+    const {data, loading, error} = useQuery(FETCH_STUDENT_NAME_OP, {
+        variables: {studentId}
+    });
+
+    let studentName = data && data.fetchStudent.name;
 
     function updateRating(id, rating) {
        /*  setPracticeTexts(prevPracticeTexts => {
