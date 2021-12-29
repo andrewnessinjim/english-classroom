@@ -16,10 +16,10 @@ function PracticeList(props) {
                     <PracticeTextRow
                         text={practice.text}
                         latestRating={practice.latestRating}
-                        key={practice.id}
-                        id={practice.id}
-                        onRate={rating => onRate(practice.id, rating)}
-                        onChangeConfirm={text => onChangeConfirm(practice.id, text)}
+                        key={practice._id}
+                        id={practice._id}
+                        onRate={rating => onRate(practice._id, rating)}
+                        onChangeConfirm={text => onChangeConfirm(practice._id, text)}
                     />
             )}
         </ol>
