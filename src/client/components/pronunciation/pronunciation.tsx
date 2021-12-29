@@ -74,11 +74,6 @@ function Pronunciation() {
                 newRating
             }
         });
-       /*  setPracticeTexts(prevPracticeTexts => {
-            const newPracticeTexts = _.cloneDeep(prevPracticeTexts);
-            newPracticeTexts.find(practiceText => practiceText.id === id).latestRating = rating;
-            return newPracticeTexts;
-        }); */
     }
 
     function addPracticeText(text) {
@@ -89,19 +84,10 @@ function Pronunciation() {
                 text
             }
         });
-        /* setPracticeTexts(prevPracticeTexts => {
-            const newPracticeTexts = _.cloneDeep(prevPracticeTexts);
-            newPracticeTexts.unshift({id: prevPracticeTexts.length + 1, text})
-            return newPracticeTexts;
-        }); */
     }
 
     function updateText(id, text) {
-        /* setPracticeTexts(prevPracticeTexts => {
-            const newPracticeTexts = _.cloneDeep(prevPracticeTexts);
-            newPracticeTexts.find(practiceText => practiceText.id === id).text = text;
-            return newPracticeTexts;
-        }); */
+
     }
 
     return (
