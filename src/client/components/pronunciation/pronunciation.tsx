@@ -32,6 +32,13 @@ mutation UpdateRating($teacherId: String!, $studentId: String!,
                         $practiceTextId: String!, $newRating: Int!) {
   updateRating(teacherId: $teacherId, studentId: $studentId, practiceTextId: $practiceTextId, newRating: $newRating)
 }`
+
+const ADD_PRACTICE_TEXT_OP = gql`
+    mutation AddPracticeText($teacherId: String!, $studentId: String!, $text: String!) {
+        addPracticeText(teacherId: $teacherId, studentId: $studentId, text: $text)
+    }
+`;
+
 function Pronunciation() {
     const user = useContext(UserContext);
     let params = useParams();
@@ -51,8 +58,13 @@ function Pronunciation() {
             refetchQueries: [
                 FETCH_PRACTICE_TEXTS_OP
             ]
-        })
+        });
 
+    const [serverAddPracticeText] = useMutation(ADD_PRACTICE_TEXT_OP, {
+        refetchQueries: [
+            FETCH_PRACTICE_TEXTS_OP
+        ]
+    })
     function updateRating(id, newRating) {
         serverUpdateRating({
             variables: {
@@ -61,7 +73,7 @@ function Pronunciation() {
                 practiceTextId: id,
                 newRating
             }
-        })
+        });
        /*  setPracticeTexts(prevPracticeTexts => {
             const newPracticeTexts = _.cloneDeep(prevPracticeTexts);
             newPracticeTexts.find(practiceText => practiceText.id === id).latestRating = rating;
@@ -70,6 +82,13 @@ function Pronunciation() {
     }
 
     function addPracticeText(text) {
+        serverAddPracticeText({
+            variables: {
+                teacherId: user.id,
+                studentId,
+                text
+            }
+        });
         /* setPracticeTexts(prevPracticeTexts => {
             const newPracticeTexts = _.cloneDeep(prevPracticeTexts);
             newPracticeTexts.unshift({id: prevPracticeTexts.length + 1, text})
