@@ -2,6 +2,7 @@ type Query {
     _dummy: String
     fetchStudents(teacherId: String!): [Student]
     fetchPracticeTexts(studentId: String!): [PracticeText]
+    fetchStudent(studentId: String!): Student
 }
 
 type Mutation {

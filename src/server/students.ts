@@ -9,6 +9,12 @@ async function fetchStudents(teacherId, user) {
     return students.toArray();
 }
 
+async function fetchStudent(studentId) {
+    const studentDoc = await db.get().collection("students").findOne({_id: new ObjectId(studentId)});
+    return studentDoc;
+}
+
 export {
-    fetchStudents
+    fetchStudents,
+    fetchStudent
 }
