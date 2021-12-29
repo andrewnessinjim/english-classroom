@@ -15,6 +15,7 @@ import Header from "./components/rootTemplate/header";
 import StudentsList from "./components/studentsList";
 import Login from "./components/login";
 import Pronunciation from "./components/pronunciation/pronunciation";
+import { UserContext } from "./context";
 
 
 const client = new ApolloClient({
@@ -43,18 +44,23 @@ const students = [
     {name: "Tiny Mahima", id: 5},
 ]
 
+
+const user = {};
+
 ReactDOM.render(
     <React.StrictMode>
         <ApolloProvider client={client}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<App/>}>
-                        <Route index element={<Login/>}/>
-                        <Route path="/teachers/:teacherName" element={<StudentsList students={students}/>}/>
-                        <Route path="/teachers/:teacherName/students/:studentName" element={<Pronunciation/>}/>
-                    </Route>
-                </Routes>
-            </BrowserRouter>
+            <UserContext.Provider value={user}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<App/>}>
+                            <Route index element={<Login/>}/>
+                            <Route path="/:username" element={<StudentsList students={students}/>}/>
+                            <Route path="/teachers/:teacherName/students/:studentName" element={<Pronunciation/>}/>
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
+            </UserContext.Provider>
         </ApolloProvider>
     </React.StrictMode>,
     document.getElementById("mount")

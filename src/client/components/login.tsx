@@ -1,8 +1,9 @@
 import "./login.scss"
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useMutation, gql } from "@apollo/client";
 import { Navigate } from "react-router-dom";
+import { UserContext } from "../context";
 
 const LOGIN_OP = gql`
 mutation Login($username: String!, $password: String!) {
@@ -11,20 +12,23 @@ mutation Login($username: String!, $password: String!) {
     user {
       id
       role
+      username
     }
   }
 }
 `
 function Login(){
+    const user = useContext(UserContext);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [login, {data, loading, error}] = useMutation(LOGIN_OP);
     const [isTyping, setIsTyping] = useState(false);
     const isLoggedIn = data && data.login && data.login.token;
-
+    if(isLoggedIn) populateUserContext();
+    
     return (
         isLoggedIn ? 
-            <Navigate to="/teachers/sarah" />
+            <Navigate to={`/${user.username}`} />
             :
             <section className="login-container">
                 <form className="login-form">
@@ -59,6 +63,13 @@ function Login(){
                 password
             }
         })
+    }
+
+    function populateUserContext() {
+        user.token = data.login.token;
+        user.username = data.login.user.username;
+        user.role = data.login.user.role;
+        user.id = data.login.user.id;
     }
 }
 
