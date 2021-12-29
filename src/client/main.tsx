@@ -71,8 +71,8 @@ ReactDOM.render(
                     <Routes>
                         <Route path="/" element={<App/>}>
                             <Route index element={<Login/>}/>
-                            <Route path="/:username" element={<StudentsList students={students}/>}/>
-                            <Route path="/teachers/:teacherName/students/:studentName" element={<Pronunciation/>}/>
+                            <Route path="/:teacherName" element={<StudentsList students={students}/>}/>
+                            <Route path="/:teacherName/:studentName" element={<Pronunciation/>}/>
                         </Route>
                     </Routes>
                 </BrowserRouter>
