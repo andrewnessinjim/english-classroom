@@ -39,6 +39,11 @@ const ADD_PRACTICE_TEXT_OP = gql`
     }
 `;
 
+const UPDATE_EXISTING_TEXT_OP = gql`
+mutation UpdateText($teacherId: String!, $studentId: String!, $practiceTextId: String!, $newText: String!) {
+  updateText(teacherId: $teacherId, studentId: $studentId, practiceTextId: $practiceTextId, newText: $newText)
+}`
+
 function Pronunciation() {
     const user = useContext(UserContext);
     let params = useParams();
@@ -64,7 +69,13 @@ function Pronunciation() {
         refetchQueries: [
             FETCH_PRACTICE_TEXTS_OP
         ]
-    })
+    });
+
+    const [updateExistingText] = useMutation(UPDATE_EXISTING_TEXT_OP, {
+        refetchQueries: [
+            FETCH_PRACTICE_TEXTS_OP
+        ]
+    });
 
     return (
         !user.token ? 
@@ -105,8 +116,15 @@ function Pronunciation() {
         });
     }
 
-    function updateText(id, text) {
-
+    function updateText(id, newText) {
+        updateExistingText({
+            variables: {
+                teacherId: user.id,
+                studentId,
+                practiceTextId: id,
+                newText
+            }
+        })
     }
 }
 
