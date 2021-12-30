@@ -3,7 +3,7 @@ import * as db from "./dao/db";
 
 async function fetchPracticeTexts(studentId) {
     const pronunciationDoc = await db.get().collection("pronunciation").findOne({studentId: new ObjectId(studentId)});
-    return pronunciationDoc.practiceTexts;
+    return pronunciationDoc && pronunciationDoc.practiceTexts? pronunciationDoc.practiceTexts : [];
 }
 
 async function updateText(teacherId, studentId, practiceTextId, newText){
