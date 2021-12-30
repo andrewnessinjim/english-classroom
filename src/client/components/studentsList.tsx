@@ -41,7 +41,13 @@ function StudentsList(props) {
                     <section className="modal-container" onClick={e => e.stopPropagation()}>
                         <form className="modal-content">
                             <h3>Add Student</h3>
-                            <input type="text" placeholder="Name" minLength={3} required value={newStudentName} onChange={(e) => setNewStudentName(e.target.value)}/>
+                            <input type="text"
+                                placeholder="Name"
+                                minLength={3}
+                                required
+                                value={newStudentName}
+                                onChange={(e) => setNewStudentName(e.target.value)}
+                                autoFocus/>
                             <button className="btn addStudent-btn" onClick={handleStudentAddition}>Add</button>
                         </form>
                     </section>
