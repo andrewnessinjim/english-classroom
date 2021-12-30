@@ -12,8 +12,12 @@ $header-height: 3.625em;
     display: flex;
     align-items: center;
     height: 100%;
-    max-width: $max-site-width;
+    max-width: $medium-max-width;
     margin: auto;
+
+    .home-icon {
+        width: 42px;
+    }
 }
 
 .site-heading {
