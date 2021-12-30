@@ -26,6 +26,8 @@ async function addPracticeText(teacherId, studentId, text){
             teacherId: new ObjectId(teacherId)
         }, {
             $push: {practiceTexts: {_id: new ObjectId(), text}}
+        },{
+            upsert: true
         }
     )
 }
