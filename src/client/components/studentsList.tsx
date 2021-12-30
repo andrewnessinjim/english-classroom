@@ -3,7 +3,7 @@ import "./studentsList.scss";
 import React, {useContext, useState} from "react";
 import { Link, Navigate } from "react-router-dom";
 import { UserContext } from "../context";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery, gql, useMutation } from "@apollo/client";
 
 const FETCH_STUDENTS_OP = gql`
 query FetchStudents($teacherId: String!) {
@@ -11,13 +11,25 @@ query FetchStudents($teacherId: String!) {
         _id
         name
   }
-}
-`
+}`;
+
+const ADD_STUDENT_OP = gql`
+mutation AddStudent($teacherId: String!, $studentName: String!) {
+  addStudent(teacherId: $teacherId, studentName: $studentName)
+}`;
+
 function StudentsList(props) {
     const user = useContext(UserContext);
     const {data, loading, error} = useQuery(FETCH_STUDENTS_OP, {
         variables: {teacherId: user.id}
     });
+
+    const [addStudent] = useMutation(ADD_STUDENT_OP, {
+        refetchQueries: [
+            FETCH_STUDENTS_OP
+        ]
+    });
+
     let [isAddStudentModalOpen, setAddStudentModelOpen] = useState(false);
     let [newStudentName, setNewStudentName] = useState("");
     return (
@@ -56,7 +68,13 @@ function StudentsList(props) {
     function handleStudentAddition(e) {
         e.preventDefault();
 
-        //TODO: Send request to server to add student
+        addStudent({
+            variables: {
+                teacherId: user.id,
+                studentName: newStudentName
+            }
+        });
+        setAddStudentModelOpen(false);
     }
 }
 

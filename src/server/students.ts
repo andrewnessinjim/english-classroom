@@ -14,7 +14,16 @@ async function fetchStudent(studentId) {
     return studentDoc;
 }
 
+async function addStudent(studentName, teacherId) {
+    await db.get().collection("students").insertOne({
+        name: studentName,
+        teacherId: new ObjectId(teacherId)
+    });
+    return true;
+}
+
 export {
     fetchStudents,
-    fetchStudent
+    fetchStudent,
+    addStudent
 }

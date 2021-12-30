@@ -10,6 +10,7 @@ type Mutation {
     updateRating(teacherId: String!, studentId: String!, practiceTextId:String!, newRating: Int!): Boolean
     updateText(teacherId: String!, studentId: String!, practiceTextId:String!, newText: String!): Boolean
     addPracticeText(teacherId: String!, studentId: String!, text: String!): Boolean
+    addStudent(teacherId: String!, studentName: String!): Boolean
 }
 
 type AuthPayload {
