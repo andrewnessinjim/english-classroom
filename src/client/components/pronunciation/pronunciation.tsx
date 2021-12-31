@@ -1,6 +1,6 @@
 import "./pronunciation.scss";
 
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import _ from "lodash";
 import {Navigate, useParams} from "react-router-dom";
 
@@ -48,6 +48,7 @@ function Pronunciation() {
     const user = useContext(UserContext);
     let params = useParams();
     let {studentId} = params;
+    let [shouldScrollToEnd, setShouldScrollToEnd] = useState(false);
 
     const practiceTexts = useQuery(FETCH_PRACTICE_TEXTS_OP, {
         variables: {studentId}
@@ -89,6 +90,7 @@ function Pronunciation() {
                         practiceTexts={practiceTexts.data.fetchPracticeTexts}
                         onRate={updateRating}
                         onChangeConfirm={updateText}
+                        shouldScrollToEnd={shouldScrollToEnd}
                     />}
                 <PlainInput onSubmit={addPracticeText}/>
             </section>
@@ -104,6 +106,7 @@ function Pronunciation() {
                 newRating
             }
         });
+        setShouldScrollToEnd(false);
     }
 
     function addPracticeText(text) {
@@ -114,6 +117,7 @@ function Pronunciation() {
                 text
             }
         });
+        setShouldScrollToEnd(true);
     }
 
     function updateText(id, newText) {
@@ -124,7 +128,8 @@ function Pronunciation() {
                 practiceTextId: id,
                 newText
             }
-        })
+        });
+        setShouldScrollToEnd(false);
     }
 }
 
