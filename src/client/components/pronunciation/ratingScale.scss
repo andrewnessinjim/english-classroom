@@ -26,6 +26,7 @@
     &:hover {
         @include filled;
         cursor: pointer;
+        transform: scale(1.5);
     }
 
     &.filled {
