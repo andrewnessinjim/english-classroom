@@ -19,6 +19,8 @@ import StudentsList from "./components/studentsList";
 import Login from "./components/login";
 import Pronunciation from "./components/pronunciation/pronunciation";
 import { token, UserContext } from "./context";
+import Practice from "./components/pronunciation/practice";
+import Progress from "./components/pronunciation/progress";
 
 const authLink = setContext((_, { headers }) => {
     const authToken = token.token;
@@ -72,7 +74,10 @@ ReactDOM.render(
                         <Route path="/" element={<App/>}>
                             <Route index element={<Login/>}/>
                             <Route path="/:teacherName" element={<StudentsList students={students}/>}/>
-                            <Route path="/:teacherName/:studentId" element={<Pronunciation/>}/>
+                            <Route path="/:teacherName/:studentId" element={<Pronunciation/>}>
+                                <Route path="/:teacherName/:studentId/practice" element={<Practice/>}/>
+                                <Route path="/:teacherName/:studentId/progress" element={<Progress/>}/>
+                            </Route>
                         </Route>
                     </Routes>
                 </BrowserRouter>

@@ -60,7 +60,7 @@ function StudentsList(props) {
                     {data && data.fetchStudents.map(student => 
                         <li className="student" key = {student._id}>
                             <span className="student--name">{student.name}</span>
-                            <Link to={`/${user.username}/${student._id}`}>
+                            <Link to={`/${user.username}/${student._id}/practice`}>
                                 <button className="student--practiceBtn btn">
                                     Practice
                                 </button>
