@@ -1,5 +1,5 @@
 import { login } from "../auth"
-import { addPracticeText, updateRating, updateText } from "../pronunciation";
+import { addPracticeText, calculateAndSaveAverage, updateRating, updateText } from "../pronunciation";
 import { addStudent } from "../students";
 
 
@@ -23,10 +23,15 @@ function addStudentResolver(parent, args, context, info) {
     return addStudent(args.studentName, args.teacherId);
 }
 
+function calculateAndSaveAverageResolver(parent, args, context, info) {
+    return calculateAndSaveAverage(args.teacherId, args.studentId);
+}
+
 export default {
     login: loginResolver,
     updateRating: updateRatingResolver,
     updateText: updateTextResolver,
     addPracticeText: addPracticeTextResolver,
-    addStudent: addStudentResolver
+    addStudent: addStudentResolver,
+    calculateAndSaveAverage: calculateAndSaveAverageResolver
 }
