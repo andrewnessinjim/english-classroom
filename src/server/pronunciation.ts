@@ -2,20 +2,17 @@ import { ObjectId } from "mongodb";
 import * as db from "./dao/db";
 
 async function fetchPracticeTexts(studentId) {
-    const eightHoursAgo = new Date().getTime() - (8 * 60 * 60 * 1000);
     const pronunciationDoc = await db.get().collection("pronunciation").findOne({
             studentId: new ObjectId(studentId)
         }, {
             projection: {
                 "practiceTexts.text": 1,
                 "practiceTexts._id": 1,
-                "practiceTexts.rating" : {$slice: -1}}
+                "practiceTexts.latestRating" : 1}
         });
     if(!pronunciationDoc || !pronunciationDoc.practiceTexts) return [];
     pronunciationDoc.practiceTexts.forEach(practiceText => {
-        practiceText.latestRating = 
-            practiceText.rating && practiceText.rating[0].at.getTime() > eightHoursAgo? 
-                practiceText.rating[0].value : null;
+        practiceText.latestRating = practiceText.latestRating? practiceText.latestRating.value : 0;
     });
     return pronunciationDoc && pronunciationDoc.practiceTexts? pronunciationDoc.practiceTexts : [];
 }
@@ -39,7 +36,8 @@ async function addPracticeText(teacherId, studentId, text){
             studentId: new ObjectId(studentId),
             teacherId: new ObjectId(teacherId)
         }, {
-            $push: {practiceTexts: {_id: new ObjectId(), text}}
+            $push: {practiceTexts: {_id: new ObjectId(), text}},
+            $set: {lastActive: new Date()}
         },{
             upsert: true
         }
@@ -54,7 +52,10 @@ async function updateRating(teacherId, studentId, practiceTextId, newRating){
             "practiceTexts._id": new ObjectId(practiceTextId)
         },
         {
-            $push: {"practiceTexts.$.rating": {value: newRating, at: new Date() }}
+            $set: {
+                "practiceTexts.$.latestRating": {value: newRating, at: new Date() },
+                lastActive : new Date()
+            }
         });
     return true;
 }
