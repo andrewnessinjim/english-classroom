@@ -9,6 +9,8 @@ import PracticeList from "./practiceList";
 import { useQuery, gql, useMutation} from "@apollo/client";
 import { UserContext } from "../../context";
 
+import reset from "../../icons/reset.svg";
+
 const FETCH_PRACTICE_TEXTS_OP = gql`
 query FetchPracticeTexts($studentId: String!) {
   fetchPracticeTexts(studentId: $studentId) {
@@ -35,6 +37,12 @@ const UPDATE_EXISTING_TEXT_OP = gql`
 mutation UpdateText($teacherId: String!, $studentId: String!, $practiceTextId: String!, $newText: String!) {
   updateText(teacherId: $teacherId, studentId: $studentId, practiceTextId: $practiceTextId, newText: $newText)
 }`
+
+const CALC_AVG_OP = gql`
+mutation CalcAverage($teacherId: String!, $studentId: String!) {
+  calcAverage(teacherId: $teacherId, studentId: $studentId)
+}
+`
 
 function Practice(){
     const user = useContext(UserContext);
@@ -64,8 +72,19 @@ function Practice(){
         ]
     });
 
+    const [serverCalcAverage] = useMutation(CALC_AVG_OP, {
+        refetchQueries: [
+            FETCH_PRACTICE_TEXTS_OP
+        ]
+    });
+
     return (
         <section className="practice-section">
+            {!practiceTexts.data || !practiceTexts.data.fetchPracticeTexts ?
+                "":
+                <section className="practice-controls">
+                    <img src={reset} onClick={calcAverage}/>
+                </section>}
             {!practiceTexts.data || !practiceTexts.data.fetchPracticeTexts ?
                     "Loading ":
                     <PracticeList 
@@ -113,6 +132,14 @@ function Practice(){
         setShouldScrollToEnd(false);
     }
 
+    function calcAverage() {
+        serverCalcAverage({
+            variables: {
+                teacherId: user.id,
+                studentId
+            }
+        });
+    }
 }
 
 export default Practice;

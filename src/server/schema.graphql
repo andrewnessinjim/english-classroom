@@ -12,7 +12,7 @@ type Mutation {
     updateText(teacherId: String!, studentId: String!, practiceTextId:String!, newText: String!): Boolean
     addPracticeText(teacherId: String!, studentId: String!, text: String!): Boolean
     addStudent(teacherId: String!, studentName: String!): Boolean
-    calculateAndSaveAverage(teacherId: String!, studentId: String!): Boolean
+    calcAverage(teacherId: String!, studentId: String!): Boolean
 }
 
 type AuthPayload {

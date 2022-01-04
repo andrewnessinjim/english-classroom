@@ -3,4 +3,18 @@
     flex-direction: column;
     min-height: 0;
     flex: 1;
+
+    .practice-controls {
+        margin-top: 0.5rem;
+        display: flex;
+        img {
+            height: 28px;
+            transition: 250ms all;
+            margin-left: auto;
+            &:hover {
+                transform: scale(1.25);
+                cursor: pointer;
+            }
+        }
+    }
 }
