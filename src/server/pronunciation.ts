@@ -17,6 +17,22 @@ async function fetchPracticeTexts(studentId) {
     return pronunciationDoc && pronunciationDoc.practiceTexts? pronunciationDoc.practiceTexts : [];
 }
 
+async function fetchProgress(teacherId, studentId) {
+    const pronunciationDoc = await db.get().collection("pronunciation").findOne({
+        teacherId: new ObjectId(teacherId),
+        studentId: new ObjectId(studentId)
+    }, {
+        projection: {
+            averageHistory: 1
+        }
+    });
+
+    return pronunciationDoc && pronunciationDoc.averageHistory.map(item => {
+        item.lastActive = item.lastActive.toDateString();
+        return item;
+    });
+}
+
 async function updateText(teacherId, studentId, practiceTextId, newText){
     await db.get().collection("pronunciation").updateOne(
         {
@@ -155,5 +171,6 @@ export {
     updateText,
     addPracticeText,
     updateRating,
-    calculateAndSaveAverage
+    calculateAndSaveAverage,
+    fetchProgress
 }

@@ -73,7 +73,8 @@ async function setUpRoutes(app) {
         "/",
         "/:teacherName",
         "/:teacherName/:studentId",
-        "/:teacherName/:studentId/practice"], 
+        "/:teacherName/:studentId/practice",
+        "/:teacherName/:studentId/progress"], 
         async (req, res) => {
             res.render("index",{
                 useExternalStyles,

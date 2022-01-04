@@ -3,6 +3,7 @@ type Query {
     fetchStudents(teacherId: String!): [Student]
     fetchPracticeTexts(studentId: String!): [PracticeText]
     fetchStudent(studentId: String!): Student
+    fetchProgress(teacherId: String!, studentId: String!): [AverageRating]
 }
 
 type Mutation {
@@ -35,4 +36,10 @@ type PracticeText {
     _id: ID!
     text: String
     latestRating: Int
+}
+
+type AverageRating {
+    lastActive: String!
+    average: Float!
+    totalPracticed: Int!
 }
