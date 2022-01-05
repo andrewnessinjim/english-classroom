@@ -74,7 +74,8 @@ function Practice(){
 
     const [serverCalcAverage] = useMutation(CALC_AVG_OP, {
         refetchQueries: [
-            FETCH_PRACTICE_TEXTS_OP
+            FETCH_PRACTICE_TEXTS_OP,
+            "FetchProgress"
         ]
     });
 
