@@ -42,7 +42,7 @@ function Progress(){
                         <tr key={index}>
                             <td>{averageHistoryItem.lastActive}</td>
                             <td>{averageHistoryItem.totalPracticed}</td>
-                            <td>{averageHistoryItem.average}</td>
+                            <td>{averageHistoryItem.average && averageHistoryItem.average.toFixed(2)}</td>
                         </tr>
                     )}
                  </tbody>
