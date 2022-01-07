@@ -61,7 +61,7 @@ function StudentsList(props) {
                         <li className="student" key = {student._id}>
                             <span className="student--name">{student.name}</span>
                             <Link to={`/${user.username}/${student._id}/practice`}>
-                                <button className="student--practiceBtn btn">
+                                <button className="btn">
                                     Pronunciation
                                 </button>
                             </Link>
