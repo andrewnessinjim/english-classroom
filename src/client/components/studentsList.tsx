@@ -62,7 +62,7 @@ function StudentsList(props) {
                             <span className="student--name">{student.name}</span>
                             <Link to={`/${user.username}/${student._id}/practice`}>
                                 <button className="student--practiceBtn btn">
-                                    Practice
+                                    Pronunciation
                                 </button>
                             </Link>
                         </li>
