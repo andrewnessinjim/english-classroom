@@ -14,3 +14,9 @@ db.createUser(
 
 db.auth("english-classroom-user", "english-classroom-pass");
 let appDb = db.getSiblingDB(DB_NAMESPACE);
+
+appDb.users.insertOne({
+    username: "teacher",
+    password: "$2b$10$3eo9yMuJVYrsW06Bz24sJuojl0eQMBymZNuPtfwFr5r6Ap7ZJJzfq",
+    role: "teacher"
+});
