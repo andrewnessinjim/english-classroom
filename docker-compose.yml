@@ -1,29 +1,26 @@
-version: '2.4'
+version: '3'
 
 services:
-  english-classroom:
-      build:
-        context: .
-        target: dev
-      environment:
+  local-english-classroom:
+    image: node:17
+    volumes:
+      - ./:/app
+    environment:
         - DB_URI=mongodb://english-classroom-user:english-classroom-pass@local-mongo:27017
         - DB_NAMESPACE=englishClassroom
-        - JWT_PRIVATE_KEY=shouldBeSecureForProdutionAnythingIsFineForLocal
-      volumes:
-        - ./:/app/sourcecode
-      ports:
-        - '3000:3000'
-        - '9229:9229'
-        - '8080:8080'
-      tty: true
-      depends_on:
-        - local-mongo
+    ports:
+      - '3000:3000'
+      - '3001:3001'
+      - '9229:9229'
+    tty: true
+    working_dir: /app
+    command: bash /app/docker-entrypoint.sh
 
   local-mongo:
     image: mongo:5.0.3
     restart: always
     ports:
-      - '27017:27017'
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
@@ -32,8 +29,8 @@ services:
       test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
     tty: true
     volumes:
-      - local-mongo-data:/data/db
+      - local-english-classroom-data:/data/db
       - ./mongodb:/docker-entrypoint-initdb.d:ro
 
 volumes:
-  local-mongo-data:
+  local-english-classroom-data:

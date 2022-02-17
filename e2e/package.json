@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cypress-open": "cypress open --config baseUrl=http://localhost:3000"
+    "cypress:open": "cypress open --config baseUrl=http://localhost:3001"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "cypress": "^9.1.1"
+  "devDependencies": {
+    "cypress": "^9.4.1"
   }
 }

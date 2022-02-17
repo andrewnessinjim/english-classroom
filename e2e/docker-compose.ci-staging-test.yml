@@ -1,5 +1,3 @@
-# Approach from https://mtlynch.io/painless-web-app-testing/
-
 version: '3.2'
 
 services:

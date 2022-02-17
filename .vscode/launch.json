@@ -8,8 +8,8 @@
             "port": 9229,
             "address": "localhost",
             "sourceMaps": true,
-            "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/app/sourcecode",
+            "localRoot": "${workspaceFolder}/server",
+            "remoteRoot": "/app/server",
             "protocol": "inspector",
             "restart": true
         },
@@ -17,8 +17,14 @@
             "type": "pwa-chrome",
             "name": "Chrome Launch",
             "request": "launch",
-            "url": "http://localhost:3000",
-            "userDataDir": "${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir"
+            "url": "http://localhost:3001",
+            "userDataDir": "${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir",
+            "localRoot": "./client/src",
+            "remoteRoot": "/app/client/src",
+            "webRoot": "/app/client/src",
+            "sourceMapPathOverrides": {
+                "webpack:///src/*": "${webRoot}/*"
+            }
         }
     ]
 }

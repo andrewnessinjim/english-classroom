@@ -1,43 +1,36 @@
-FROM  node:17-bullseye-slim as base
-
-
-ENV PATH=/app/node_modules/.bin:$PATH
+FROM node:17-bullseye-slim 
 
 #Express port
 EXPOSE 3000
 
 #Hack to solve cypress perm error
 RUN chmod 777 /root
-ENV NODE_ENV=development
-
-WORKDIR /app
-
-COPY package*json ./
-RUN npm ci && npm cache clean --force
-
-##################################################################################
-##################################################################################
-
-FROM base as dev
-WORKDIR /app/sourcecode
-
-#Node debugger port
-EXPOSE 9229
-
-CMD ["gulp", "dev"]
-
-##################################################################################
-##################################################################################
-
-FROM base as prod
-
-COPY . .
-
 ENV NODE_ENV=production
+
+WORKDIR /app/client
+
+COPY ./client/package*.json ./
+
+RUN npm install
+
+COPY ./client /app/client
+RUN npm run build
+
+RUN mkdir -p /app/server/ && mv ./build /app/server/public
+
+WORKDIR /app/server
+
+COPY ./server/package*.json ./
+
+ENV NODE_ENV=development
+RUN npm install
+RUN npm install -g gulp
+ENV PATH=/app/server/node_modules/.bin:$PATH
+COPY ./server /app/server
 
 RUN gulp build
 
-#This will clean up non-production dependencies because NODE_ENV is now production (Disabled for now to save build time in circleci)
-#RUN npm ci && npm cache clean --force
+ENV NODE_ENV=production
+RUN npm install
 
-CMD ["node","/app/run.js"]
+CMD ["node", "/app/server/run.js"]

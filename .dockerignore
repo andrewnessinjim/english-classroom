@@ -1,4 +1,8 @@
-node_modules
-build
+client/node_modules
+server/node_modules
+e2e/node_modules
+server/build
 .git/
 .gitignore
+.vscode
+.circleci
