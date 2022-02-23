@@ -3,7 +3,7 @@ import reportWebVitals from './reportWebVitals';
 
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Outlet, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Outlet, Routes, Route } from "react-router-dom";
 
 import {
     ApolloProvider,
