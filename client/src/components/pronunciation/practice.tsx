@@ -23,7 +23,15 @@ query FetchPracticeTexts($studentId: String!) {
 const UPDATE_RATING_OP = gql`
 mutation UpdateRating($teacherId: String!, $studentId: String!, 
                         $practiceTextId: String!, $newRating: Int!) {
-  updateRating(teacherId: $teacherId, studentId: $studentId, practiceTextId: $practiceTextId, newRating: $newRating)
+  updateRating(
+      teacherId: $teacherId,
+      studentId: $studentId,
+      practiceTextId: $practiceTextId,
+      newRating: $newRating) {
+        _id
+        latestRating
+        text
+  }
 }`
 
 const ADD_PRACTICE_TEXT_OP = gql`
@@ -53,11 +61,7 @@ function Practice(){
         variables: {studentId}
     });
 
-    const [serverUpdateRating] = useMutation(UPDATE_RATING_OP, {
-        refetchQueries: [
-            FETCH_PRACTICE_TEXTS_OP
-        ]
-    });
+    const [serverUpdateRating] = useMutation(UPDATE_RATING_OP);
 
     const [serverAddPracticeText] = useMutation(ADD_PRACTICE_TEXT_OP, {
         refetchQueries: [

@@ -8,7 +8,7 @@ type Query {
 
 type Mutation {
     login(username: String!, password: String!): AuthPayload
-    updateRating(teacherId: String!, studentId: String!, practiceTextId:String!, newRating: Int!): Boolean
+    updateRating(teacherId: String!, studentId: String!, practiceTextId:String!, newRating: Int!): PracticeText
     updateText(teacherId: String!, studentId: String!, practiceTextId:String!, newText: String!): Boolean
     addPracticeText(teacherId: String!, studentId: String!, text: String!): Boolean
     addStudent(teacherId: String!, studentName: String!): Boolean
