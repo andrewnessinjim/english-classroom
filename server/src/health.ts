@@ -1,5 +1,7 @@
-export function health() {
+function checkHealth() {
     return {
-        message: "I am OK! Thank you for asking!"
-    };
+        message: "I am OK! Thanks for asking."
+    }
 }
+
+export default checkHealth;

@@ -1,19 +1,45 @@
 type Query {
-    homePage: HomePage!
+    _dummy: String
+    fetchStudents(teacherId: String!): [Student]
+    fetchPracticeTexts(studentId: String!): [PracticeText]
+    fetchStudent(studentId: String!): Student
+    fetchProgress(teacherId: String!, studentId: String!): [AverageRating]
 }
 
-type HomePage {
-    heading: String!
-    toolSets: [ToolSet]!
+type Mutation {
+    login(username: String!, password: String!): AuthPayload
+    updateRating(teacherId: String!, studentId: String!, practiceTextId:String!, newRating: Int!): Boolean
+    updateText(teacherId: String!, studentId: String!, practiceTextId:String!, newText: String!): Boolean
+    addPracticeText(teacherId: String!, studentId: String!, text: String!): Boolean
+    addStudent(teacherId: String!, studentName: String!): Boolean
+    calcAverage(teacherId: String!, studentId: String!): Boolean
 }
 
-type ToolSet {
-    heading: String!
-    tools: [Tool]!
+type AuthPayload {
+    token: String
+    user: User
 }
 
-type Tool {
-    logoKey: String!
-    toolTip: String!
-    logoHeightPx: Int
+type User {
+    id: ID!
+    username: String!
+    role: String!
+}
+
+type Student {
+    _id: ID!
+    teacherId: String!
+    name: String!
+}
+
+type PracticeText {
+    _id: ID!
+    text: String
+    latestRating: Int
+}
+
+type AverageRating {
+    lastActive: String!
+    average: Float!
+    totalPracticed: Int!
 }

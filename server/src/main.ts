@@ -1,21 +1,26 @@
-import * as http from "http";
-import * as fs from "fs";
-import * as path from "path";
+import http from "http";
+import fs from "fs";
+import path from "path";
 
-import express from "express";
-import * as db from "./db";
+import express from "express"
 import chalk from "chalk";
-import { health } from "./health";
 import { ApolloServer } from "apollo-server-express";
 import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
-import Query from "./Query";
 
-const PORT:number = parseInt(process.env.PORT) || 3000;
+import * as db from "./dao/db";
+import Mutation from "./resolvers/Mutation";
+import Query from "./resolvers/Query";
+
+import checkHealth from "./health";
+import { fetchUserInfo } from "./auth";
+
+const PORT = process.env.PORT || 3000;
+const isDevelopment = process.env.NODE_ENV !== "production";
 
 boot();
 
 async function boot() {
-    await db.connect(); 
+    await db.connect()
     const app = express();
     setUpRoutes(app);
     startApolloServer(app);
@@ -30,9 +35,16 @@ async function startApolloServer(app) {
             "utf-8"
         ),
         resolvers: {
-            Query
+            Query,
+            Mutation
         },
-        plugins: [ApolloServerPluginDrainHttpServer({httpServer})]
+        plugins: [ ApolloServerPluginDrainHttpServer({httpServer}) ],
+        context: async ({req}) => {
+            return {
+                ...req,
+                user: req && req.headers ? await fetchUserInfo(req.headers.authorization): null
+            }
+        }
     });
 
     await server.start();
@@ -40,28 +52,26 @@ async function startApolloServer(app) {
         app
     });
 
-    await new Promise(resolve => httpServer.listen({port: PORT}, resolve));
+    await new Promise(resolve => httpServer.listen({port: PORT}, () => {resolve(true)}));
     console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`);
+
 }
 
 async function setUpRoutes(app) {
     app.get("/healthcheck", (req, res) => {
-        const healthJson = health();
-        res.setHeader("Content-Type", "application/json");
-        res.end(JSON.stringify(healthJson));
+        const health = checkHealth();
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify(health));
     });
 
-    app.get("/helloreactmessage", async (req, res) => {
-        const homePageDoc = await db.get().collection("pages").findOne({
-            pageName: "homePage"
-        }, {
-            projection: {
-                reactMessage: 1
-            }
-        });
-        const health = {message: homePageDoc.reactMessage}
-        res.setHeader("Content-Type", "application/json");
-        res.end(JSON.stringify(health));
+    app.get([
+        "/",
+        "/:teacherName",
+        "/:teacherName/:studentId",
+        "/:teacherName/:studentId/practice",
+        "/:teacherName/:studentId/progress"], 
+        async (req, res) => {
+            res.render("index");
     });
 
     if(process.env.NODE_ENV == "production") {

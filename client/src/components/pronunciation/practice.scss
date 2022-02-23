@@ -1,0 +1,25 @@
+@import "../../variables.scss";
+
+.practice-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex: 1;
+
+    .practice-controls {
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+        display: flex;
+        img {
+            height: 28px;
+            transition: 250ms all;
+            margin-left: auto;
+            &:hover {
+                transform: scale(1.25);
+                cursor: pointer;
+                background: $hover-background;
+                border-radius: 5px;
+            }
+        }
+    }
+}

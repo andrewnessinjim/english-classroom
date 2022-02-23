@@ -1,7 +1,7 @@
-/// <reference types="jest"/>
+/// <reference types="Jest"/>
 
-import {health} from "../health";
+import checkHealth from "../health";
 
-test('gives valid health message', () => {
-    expect(health().message).toBe("I am OK! Thank you for asking!");
+test('health', () => {
+    expect(checkHealth().message).toBe("I am OK! Thanks for asking.");
 });
