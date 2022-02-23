@@ -20,7 +20,7 @@ mutation AddStudent($teacherId: String!, $studentName: String!) {
 
 function StudentsList(props: any) {
     const user = useContext(UserContext);
-    const {data, loading, error} = useQuery(FETCH_STUDENTS_OP, {
+    const {data} = useQuery(FETCH_STUDENTS_OP, {
         variables: {teacherId: user.id}
     });
 
