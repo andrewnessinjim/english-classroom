@@ -9,7 +9,7 @@ import { UserContext } from "../../context";
 
 const FETCH_STUDENT_NAME_OP = gql`
 query FetchStudent($studentId: String!) {
-  fetchStudent(studentId: $studentId) {
+  student(studentId: $studentId) {
     name
   }
 }
@@ -25,7 +25,7 @@ function Pronunciation() {
         variables: {studentId}
     });
 
-    let studentName = data && data.fetchStudent.name;
+    let studentName = data && data.student.name;
 
     return (
         !user.token ? 

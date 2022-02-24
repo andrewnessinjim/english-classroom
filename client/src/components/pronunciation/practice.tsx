@@ -12,7 +12,7 @@ import reset from "../../icons/reset.svg";
 
 const FETCH_PRACTICE_TEXTS_OP = gql`
 query FetchPracticeTexts($studentId: String!) {
-  fetchPracticeTexts(studentId: $studentId) {
+  practiceTexts(studentId: $studentId) {
     text
     latestRating
     _id
@@ -88,7 +88,7 @@ function Practice(){
             cache.writeQuery({
                 query: FETCH_PRACTICE_TEXTS_OP,
                 data: {
-                    fetchPracticeTexts: readResult.fetchPracticeTexts.concat([addPracticeText])},
+                    practiceTexts: readResult.practiceTexts.concat([addPracticeText])},
                 variables: {
                    studentId
                 }
@@ -111,15 +111,15 @@ function Practice(){
 
     return (
         <section className="practice-section">
-            {!data || !data.fetchPracticeTexts ?
+            {!data || !data.practiceTexts ?
                 "":
                 <section className="practice-controls">
                     <img src={reset} onClick={calcAverage} alt="Reset"/>
                 </section>}
-            {!data || !data.fetchPracticeTexts ?
+            {!data || !data.practiceTexts ?
                     "Loading ":
                     <PracticeList 
-                        practiceTexts={data.fetchPracticeTexts}
+                        practiceTexts={data.practiceTexts}
                         onRate={updateRating}
                         onChangeConfirm={updateText}
                         shouldScrollToEnd={shouldScrollToEnd}

@@ -7,7 +7,7 @@ import { useQuery, gql, useMutation } from "@apollo/client";
 
 const FETCH_STUDENTS_OP = gql`
 query FetchStudents($teacherId: String!) {
-    fetchStudents(teacherId: $teacherId) {
+    students(teacherId: $teacherId) {
         _id
         name
   }
@@ -57,7 +57,7 @@ function StudentsList(props: any) {
                     <button className="btn" onClick={() => setAddStudentModelOpen(true)}>Add Student</button>
                 </section>
                 <ol className="students--list">
-                    {data && data.fetchStudents.map((student:any) => 
+                    {data && data.students.map((student:any) => 
                         <li className="student" key = {student._id}>
                             <span className="student--name">{student.name}</span>
                             <Link to={`/${user.username}/${student._id}/practice`}>

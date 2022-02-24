@@ -1,9 +1,9 @@
 type Query {
     _dummy: String
-    fetchStudents(teacherId: String!): [Student]
-    fetchPracticeTexts(studentId: String!): [PracticeText]
-    fetchStudent(studentId: String!): Student
-    fetchProgress(teacherId: String!, studentId: String!): [AverageRating]
+    students(teacherId: String!): [Student]
+    practiceTexts(studentId: String!): [PracticeText]
+    student(studentId: String!): Student
+    progress(teacherId: String!, studentId: String!): [AverageRating]
 }
 
 type Mutation {

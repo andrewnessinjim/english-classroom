@@ -7,7 +7,7 @@ import {Navigate, useParams} from "react-router-dom";
 
 const FETCH_PROGRESS_OP = gql`
 query FetchProgress($teacherId: String!, $studentId: String!) {
-  fetchProgress(teacherId: $teacherId, studentId: $studentId) {
+  progress(teacherId: $teacherId, studentId: $studentId) {
     average
     lastActive
     totalPracticed
@@ -26,7 +26,7 @@ function Progress(){
     });
     return (
         <section className="progress-section">
-            {!averageHistory.data || !averageHistory.data.fetchProgress || !averageHistory.data.fetchProgress.length
+            {!averageHistory.data || !averageHistory.data.progress || !averageHistory.data.progress.length
              ? <p>No progress recorded yet!</p>
              : 
             <table>
@@ -38,7 +38,7 @@ function Progress(){
                     </tr>
                  </thead>
                  <tbody>
-                    {averageHistory.data.fetchProgress.map(
+                    {averageHistory.data.progress.map(
                         (   averageHistoryItem: {lastActive: any, totalPracticed:number, average:number},
                             index:number) => 
                         <tr key={index}>
