@@ -17,7 +17,12 @@ function updateRatingResolver(parent, args, context, info) {
 }
 
 function updateTextResolver(parent, args, context, info) {
-    return updateText(args.teacherId, args.studentId, args.practiceTextId, args.newText);
+    updateText(args.teacherId, args.studentId, args.practiceTextId, args.newText);
+
+    return {
+        _id: args.practiceTextId,
+        text: args.newText
+    }
 }
 
 function addPracticeTextResolver(parent, args, context, info) {

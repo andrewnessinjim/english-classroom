@@ -40,8 +40,17 @@ const ADD_PRACTICE_TEXT_OP = gql`
 `;
 
 const UPDATE_EXISTING_TEXT_OP = gql`
-mutation UpdateText($teacherId: String!, $studentId: String!, $practiceTextId: String!, $newText: String!) {
-  updateText(teacherId: $teacherId, studentId: $studentId, practiceTextId: $practiceTextId, newText: $newText)
+mutation UpdateText($teacherId: String!, $studentId: String!,
+                $practiceTextId: String!, $newText: String!) {
+  updateText(
+      teacherId: $teacherId,
+      studentId: $studentId,
+      practiceTextId:
+      $practiceTextId,
+      newText: $newText) {
+          _id
+          text
+      }
 }`
 
 const CALC_AVG_OP = gql`
@@ -68,11 +77,7 @@ function Practice(){
         ]
     });
 
-    const [updateExistingText] = useMutation(UPDATE_EXISTING_TEXT_OP, {
-        refetchQueries: [
-            FETCH_PRACTICE_TEXTS_OP
-        ]
-    });
+    const [updateExistingText] = useMutation(UPDATE_EXISTING_TEXT_OP);
 
     const [serverCalcAverage] = useMutation(CALC_AVG_OP, {
         refetchQueries: [
