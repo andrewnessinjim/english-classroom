@@ -8,7 +8,12 @@ function loginResolver(parent, args, context, info) {
 }
 
 function updateRatingResolver(parent, args, context, info) {
-    return updateRating(args.teacherId, args.studentId, args.practiceTextId, args.newRating);
+    updateRating(args.teacherId, args.studentId, args.practiceTextId, args.newRating);
+
+    return {
+        _id: args.practiceTextId,
+        latestRating: args.newRating
+    }
 }
 
 function updateTextResolver(parent, args, context, info) {

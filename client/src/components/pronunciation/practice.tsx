@@ -30,7 +30,6 @@ mutation UpdateRating($teacherId: String!, $studentId: String!,
       newRating: $newRating) {
         _id
         latestRating
-        text
   }
 }`
 

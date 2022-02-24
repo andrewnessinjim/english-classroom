@@ -61,7 +61,7 @@ async function addPracticeText(teacherId, studentId, text){
 }
 
 async function updateRating(teacherId, studentId, practiceTextId, newRating){
-    const updatedDoc = await db.get().collection("pronunciation").findOneAndUpdate(
+    const updateResult = await db.get().collection("pronunciation").updateOne(
         {
             studentId: new ObjectId(studentId),
             teacherId: new ObjectId(teacherId),
@@ -72,13 +72,8 @@ async function updateRating(teacherId, studentId, practiceTextId, newRating){
                 "practiceTexts.$.latestRating": {value: newRating, at: new Date() },
                 lastActive : new Date()
             }
-        }, {
-            returnDocument: "after"
         });
-    
-    const updatedPracticeText = updatedDoc.value.practiceTexts.find(practiceText => practiceText._id.valueOf() == practiceTextId)
-    updatedPracticeText.latestRating = updatedPracticeText.latestRating.value;
-    return updatedPracticeText;
+    console.log(`${updateResult.modifiedCount} documents modified`);
 }
 
 async function calculateAndSaveAverage(teacherId, studentId) {
