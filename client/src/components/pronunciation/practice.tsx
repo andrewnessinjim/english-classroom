@@ -1,7 +1,7 @@
 import "./practice.scss";
 
-import React, {useContext, useState} from "react";
-import {Navigate, useParams} from "react-router-dom";
+import {useContext, useState} from "react";
+import {useParams} from "react-router-dom";
 
 import PlainInput from "./plainInput";
 import PracticeList from "./practiceList";
