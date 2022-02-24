@@ -1,7 +1,6 @@
 import "./pronunciation.scss";
 
-import React, {useContext} from "react";
-import _ from "lodash";
+import {useContext} from "react";
 import {Navigate, NavLink, Outlet, useParams} from "react-router-dom";
 
 import { useQuery, gql} from "@apollo/client";

@@ -1,9 +1,9 @@
 import "./progress.scss"
 
-import React, {useContext} from "react";
+import {useContext} from "react";
 import { gql, useQuery } from "@apollo/client";
 import { UserContext } from "../../context";
-import {Navigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 const FETCH_PROGRESS_OP = gql`
 query FetchProgress($teacherId: String!, $studentId: String!) {
