@@ -83,13 +83,13 @@ jobs:
           docker_layer_caching: true
       - checkout
       - build-image:
-          tag: kickstarter:<<pipeline.git.branch>>-<<pipeline.git.revision>>
+          tag: englishClassroom:<<pipeline.git.branch>>-<<pipeline.git.revision>>
       - run-unit-tests:
-          tag: kickstarter:<<pipeline.git.branch>>-<<pipeline.git.revision>>
+          tag: englishClassroom:<<pipeline.git.branch>>-<<pipeline.git.revision>>
       - run:
           name: "Run e2e tests in docker-compose env"
           command: |
-            export APP_IMAGE=kickstarter:<<pipeline.git.branch>>-<<pipeline.git.revision>>
+            export APP_IMAGE=englishClassroom:<<pipeline.git.branch>>-<<pipeline.git.revision>>
             docker-compose -f ./e2e/docker-compose.ci-dev-test.yml build --parallel
             docker-compose -f ./e2e/docker-compose.ci-dev-test.yml up --exit-code-from cypress
       - run:
