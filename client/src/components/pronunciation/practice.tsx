@@ -5,7 +5,7 @@ import {useParams} from "react-router-dom";
 
 import PlainInput from "./plainInput";
 import PracticeList from "./practiceList";
-import { useQuery, gql, useMutation} from "@apollo/client";
+import { useQuery, gql, useMutation, ApolloCache} from "@apollo/client";
 import { UserContext } from "../../context";
 
 import reset from "../../icons/reset.svg";
@@ -69,30 +69,11 @@ function Practice(){
     let {studentId} = params;
     let [shouldScrollToEnd, setShouldScrollToEnd] = useState(false);
 
-    /* const practiceTexts = useQuery(FETCH_PRACTICE_TEXTS_OP, {
-        variables: {studentId}
-    });
- */
     const [serverUpdateRating] = useMutation(UPDATE_RATING_OP);
 
     const [serverAddPracticeText] = useMutation(ADD_PRACTICE_TEXT_OP, {
         update(cache, {data: {addPracticeText}}) {
-            console.log(`Mutation response: ${JSON.stringify(addPracticeText)}`);
-            const readResult:any = cache.readQuery({
-                query: FETCH_PRACTICE_TEXTS_OP,
-                variables: {
-                    studentId
-                }
-            });
-            console.log(`Read result: ${JSON.stringify(readResult)}`);
-            cache.writeQuery({
-                query: FETCH_PRACTICE_TEXTS_OP,
-                data: {
-                    practiceTexts: readResult.practiceTexts.concat([addPracticeText])},
-                variables: {
-                   studentId
-                }
-            })
+            cacheNewPracticeText(cache, addPracticeText);
         }
     });
 
@@ -170,6 +151,25 @@ function Practice(){
                 studentId
             }
         });
+    }
+
+    function cacheNewPracticeText(cache:ApolloCache<any>, addPracticeText:any) {
+        console.log(`Mutation response: ${JSON.stringify(addPracticeText)}`);
+            const readResult:any = cache.readQuery({
+                query: FETCH_PRACTICE_TEXTS_OP,
+                variables: {
+                    studentId
+                }
+            });
+            console.log(`Read result: ${JSON.stringify(readResult)}`);
+            cache.writeQuery({
+                query: FETCH_PRACTICE_TEXTS_OP,
+                data: {
+                    practiceTexts: readResult.practiceTexts.concat([addPracticeText])},
+                variables: {
+                   studentId
+                }
+            });
     }
 }
 
