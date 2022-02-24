@@ -114,7 +114,7 @@ function Practice(){
             {!data || !data.fetchPracticeTexts ?
                 "":
                 <section className="practice-controls">
-                    <img src={reset} onClick={calcAverage}/>
+                    <img src={reset} onClick={calcAverage} alt="Reset"/>
                 </section>}
             {!data || !data.fetchPracticeTexts ?
                     "Loading ":
