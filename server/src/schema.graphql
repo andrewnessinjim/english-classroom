@@ -10,7 +10,7 @@ type Mutation {
     login(username: String!, password: String!): AuthPayload
     updateRating(teacherId: String!, studentId: String!, practiceTextId:String!, newRating: Int!): PracticeText
     updateText(teacherId: String!, studentId: String!, practiceTextId:String!, newText: String!): PracticeText
-    addPracticeText(teacherId: String!, studentId: String!, text: String!): Boolean
+    addPracticeText(teacherId: String!, studentId: String!, text: String!): PracticeText
     addStudent(teacherId: String!, studentName: String!): Boolean
     calcAverage(teacherId: String!, studentId: String!): Boolean
 }

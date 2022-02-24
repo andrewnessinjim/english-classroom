@@ -47,17 +47,19 @@ async function updateText(teacherId, studentId, practiceTextId, newText){
 }
 
 async function addPracticeText(teacherId, studentId, text){
+    const practiceTextObjectId = new ObjectId();
     await db.get().collection("pronunciation").updateOne(
         {
             studentId: new ObjectId(studentId),
             teacherId: new ObjectId(teacherId)
         }, {
-            $push: {practiceTexts: {_id: new ObjectId(), text}},
+            $push: {practiceTexts: {_id: practiceTextObjectId, text}},
             $set: {lastActive: new Date()}
         },{
             upsert: true
         }
-    )
+    );
+    return practiceTextObjectId;
 }
 
 async function updateRating(teacherId, studentId, practiceTextId, newRating){

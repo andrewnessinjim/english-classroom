@@ -35,7 +35,11 @@ mutation UpdateRating($teacherId: String!, $studentId: String!,
 
 const ADD_PRACTICE_TEXT_OP = gql`
     mutation AddPracticeText($teacherId: String!, $studentId: String!, $text: String!) {
-        addPracticeText(teacherId: $teacherId, studentId: $studentId, text: $text)
+        addPracticeText(teacherId: $teacherId, studentId: $studentId, text: $text) {
+            _id
+            text
+            latestRating
+        }
     }
 `;
 
@@ -65,16 +69,31 @@ function Practice(){
     let {studentId} = params;
     let [shouldScrollToEnd, setShouldScrollToEnd] = useState(false);
 
-    const practiceTexts = useQuery(FETCH_PRACTICE_TEXTS_OP, {
+    /* const practiceTexts = useQuery(FETCH_PRACTICE_TEXTS_OP, {
         variables: {studentId}
     });
-
+ */
     const [serverUpdateRating] = useMutation(UPDATE_RATING_OP);
 
     const [serverAddPracticeText] = useMutation(ADD_PRACTICE_TEXT_OP, {
-        refetchQueries: [
-            FETCH_PRACTICE_TEXTS_OP
-        ]
+        update(cache, {data: {addPracticeText}}) {
+            console.log(`Mutation response: ${JSON.stringify(addPracticeText)}`);
+            const readResult:any = cache.readQuery({
+                query: FETCH_PRACTICE_TEXTS_OP,
+                variables: {
+                    studentId
+                }
+            });
+            console.log(`Read result: ${JSON.stringify(readResult)}`);
+            cache.writeQuery({
+                query: FETCH_PRACTICE_TEXTS_OP,
+                data: {
+                    fetchPracticeTexts: readResult.fetchPracticeTexts.concat([addPracticeText])},
+                variables: {
+                   studentId
+                }
+            })
+        }
     });
 
     const [updateExistingText] = useMutation(UPDATE_EXISTING_TEXT_OP);
@@ -86,17 +105,21 @@ function Practice(){
         ]
     });
 
+    const {data} = useQuery(FETCH_PRACTICE_TEXTS_OP, {
+        variables: {studentId}
+    });
+
     return (
         <section className="practice-section">
-            {!practiceTexts.data || !practiceTexts.data.fetchPracticeTexts ?
+            {!data || !data.fetchPracticeTexts ?
                 "":
                 <section className="practice-controls">
                     <img src={reset} onClick={calcAverage}/>
                 </section>}
-            {!practiceTexts.data || !practiceTexts.data.fetchPracticeTexts ?
+            {!data || !data.fetchPracticeTexts ?
                     "Loading ":
                     <PracticeList 
-                        practiceTexts={practiceTexts.data.fetchPracticeTexts}
+                        practiceTexts={data.fetchPracticeTexts}
                         onRate={updateRating}
                         onChangeConfirm={updateText}
                         shouldScrollToEnd={shouldScrollToEnd}

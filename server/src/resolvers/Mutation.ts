@@ -26,7 +26,14 @@ function updateTextResolver(parent, args, context, info) {
 }
 
 function addPracticeTextResolver(parent, args, context, info) {
-    return addPracticeText(args.teacherId, args.studentId, args.text);
+    const practiceTextObjectId = addPracticeText(args.teacherId, args.studentId, args.text);
+
+    
+    return {
+        _id: practiceTextObjectId.valueOf(),
+        text: args.text,
+        latestRating: 0
+    }
 }
 
 function addStudentResolver(parent, args, context, info) {
