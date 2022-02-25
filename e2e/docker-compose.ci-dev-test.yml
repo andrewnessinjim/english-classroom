@@ -6,6 +6,7 @@ services:
     environment:
         - DB_URI=mongodb://english-classroom-user:english-classroom-pass@mongo:27017
         - DB_NAMESPACE=englishClassroom
+        - JWT_PRIVATE_KEY=shouldBeSecureForProdutionAnythingIsFineForLocal
     depends_on:
       - mongo
     ports:
