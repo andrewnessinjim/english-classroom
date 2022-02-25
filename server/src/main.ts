@@ -15,7 +15,6 @@ import checkHealth from "./health";
 import { fetchUserInfo } from "./auth";
 
 const PORT = process.env.PORT || 3000;
-const isDevelopment = process.env.NODE_ENV !== "production";
 
 boot();
 
