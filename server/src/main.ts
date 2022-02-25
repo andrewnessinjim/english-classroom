@@ -69,4 +69,9 @@ async function setUpRoutes(app) {
     } else {
         console.log(chalk.bgRed.white("Detected DEVELOPMENT env, not serving static files."));
     }
+    const indexPath = path.join(__dirname, '..','public', 'index.html');
+    const indexHtmlFile = fs.readFileSync(indexPath, 'utf8');
+    app.get("*", (req, res) => {
+        res.send(indexHtmlFile);
+    });
 }
