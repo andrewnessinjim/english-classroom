@@ -64,16 +64,6 @@ async function setUpRoutes(app) {
         res.end(JSON.stringify(health));
     });
 
-    app.get([
-        "/",
-        "/:teacherName",
-        "/:teacherName/:studentId",
-        "/:teacherName/:studentId/practice",
-        "/:teacherName/:studentId/progress"], 
-        async (req, res) => {
-            res.render("index");
-    });
-
     if(process.env.NODE_ENV == "production") {
         console.log(chalk.bgRed.white("Detected PRODUCTION env, serving static files from public directory."));
         app.use(express.static("public"));
