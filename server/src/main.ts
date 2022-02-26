@@ -13,6 +13,7 @@ import Query from "./resolvers/Query";
 
 import checkHealth from "./health";
 import { fetchUserInfo } from "./auth";
+import apolloLogger from "./infra/apolloLogger";
 
 const PORT = process.env.PORT || 3000;
 
@@ -37,7 +38,10 @@ async function startApolloServer(app) {
             Query,
             Mutation
         },
-        plugins: [ ApolloServerPluginDrainHttpServer({httpServer}) ],
+        plugins: [
+            apolloLogger,
+            ApolloServerPluginDrainHttpServer({httpServer}) 
+        ],
         context: async ({req}) => {
             return {
                 ...req,
@@ -66,12 +70,13 @@ async function setUpRoutes(app) {
     if(process.env.NODE_ENV == "production") {
         console.log(chalk.bgRed.white("Detected PRODUCTION env, serving static files from public directory."));
         app.use(express.static("public"));
+
+        const indexPath = path.join(__dirname, '..','public', 'index.html');
+        const indexHtmlFile = fs.readFileSync(indexPath, 'utf8');
+        app.get("*", (req, res) => {
+        res.send(indexHtmlFile);
+    });
     } else {
         console.log(chalk.bgRed.white("Detected DEVELOPMENT env, not serving static files."));
     }
-    const indexPath = path.join(__dirname, '..','public', 'index.html');
-    const indexHtmlFile = fs.readFileSync(indexPath, 'utf8');
-    app.get("*", (req, res) => {
-        res.send(indexHtmlFile);
-    });
 }
